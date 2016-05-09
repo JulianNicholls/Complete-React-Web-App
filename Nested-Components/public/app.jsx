@@ -3,7 +3,7 @@ var GreeterMessage = React.createClass({
     var props = this.props;
 
     return (
-      <div>
+      <div className="greeter-message">
         <h1>Hello {props.name}</h1>
         <p>{props.message}</p>
       </div>
@@ -14,7 +14,7 @@ var GreeterMessage = React.createClass({
 var GreeterForm = React.createClass({
   render: function  () {
     return (
-      <form onSubmit={this.onFormSubmit}>
+      <form onSubmit={this.onFormSubmit} className="greeter-form">
         <input type="text" ref="name" placeholder="Name"/><br />
         <textarea ref="message" placeholder="Message"/><br />
         <button>Update</button>
@@ -60,7 +60,7 @@ var Greeter = React.createClass({
     var state = this.state;
 
     return (
-      <div>
+      <div className="greeter">
         <GreeterMessage name={state.name} message={state.message}/>
         <GreeterForm onUpdate={this.handleUpdates}/>
       </div>
