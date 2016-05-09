@@ -1,0 +1,14 @@
+{
+  "name": "nested-component",
+  "version": "1.0.0",
+  "description": "Nested Component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julian Nicholls",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
