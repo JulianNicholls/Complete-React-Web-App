@@ -5,9 +5,8 @@ var Nav = require('Nav');
 var Main = React.createClass({
   render: function () {
     return (
-      <div>
+      <div className="main">
         <Nav />
-        <h1>Main Component</h1>
         {this.props.children}
       </div>
     )
