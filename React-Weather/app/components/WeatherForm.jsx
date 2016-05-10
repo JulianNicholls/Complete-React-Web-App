@@ -19,9 +19,7 @@ var WeatherForm = React.createClass({
     if(location.length > 0) {
       this.refs.location.value = '';
 
-      this.props.onUpdate({
-        city: location
-      });
+      this.props.onUpdate(location);
     }
   }
 });

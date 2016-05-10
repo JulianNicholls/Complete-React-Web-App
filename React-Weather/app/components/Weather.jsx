@@ -2,6 +2,7 @@ var React = require('react');
 
 var WeatherForm     = require('WeatherForm');
 var WeatherForecast = require('WeatherForecast');
+var OpenWeatherMap  = require('OpenWeatherMap');
 
 var Weather = React.createClass({
   getInitialState: function () {
@@ -21,17 +22,18 @@ var Weather = React.createClass({
       </div>
     )
   },
-  handleUpdates: function (updates) {
-    this.setState(updates)
+  handleUpdates: function (city) {
+    var self = this;
 
-    // Fake it for now.
-    this.setState({
-      forecast: 'Cloudy and 11C'
-    })
+    OpenWeatherMap.getForecast(city).then(function (temp) {
+      self.setState({
+        city:     city,
+        forecast: temp
+      });
+    }, function (errorMessage) {
+      alert(errorMessage);
+    });
   }
 });
 
 module.exports = Weather;
-
-
-// 9e7c67954b17f031bb8c2d367c8c6cda

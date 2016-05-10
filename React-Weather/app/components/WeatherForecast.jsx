@@ -7,7 +7,7 @@ var WeatherForecast = React.createClass({
     if(city.length > 0) {
       return (
         <div className="forecast">
-          {city}: {forecast}
+          {city}: {forecast}&deg;C
         </div>
       )
     }
