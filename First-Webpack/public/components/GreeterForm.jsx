@@ -5,7 +5,7 @@ var GreeterForm = React.createClass({
     return (
       <form onSubmit={this.onFormSubmit} className="greeter-form">
         <input type="text" ref="name" placeholder="Name"/><br />
-        <textarea ref="message" placeholder="Message"/><br />
+        <textarea ref="message" placeholder="Message" cols="40" rows="3"/><br />
         <button>Update</button>
       </form>
     );
