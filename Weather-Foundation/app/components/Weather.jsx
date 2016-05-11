@@ -25,7 +25,7 @@ var Weather = React.createClass({
     }
     return (
       <div className="weather">
-        <h1>What's the Weather?</h1>
+        <h1>Weather Oracle</h1>
         <WeatherForm onUpdate={this.handleUpdates} />
         {renderMessage()}
       </div>

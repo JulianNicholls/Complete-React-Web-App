@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
-  "version": "1.0.0",
-  "description": "Boilerplate",
+  "name": "weather-oracle",
+  "version": "0.5.0",
+  "description": "The Weather Oracle",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
