@@ -34,14 +34,12 @@ var Weather = React.createClass({
   handleUpdates: function (location) {
     var self = this;
 
-    this.setState({
-      isLoading: true
-    });
+    this.setState({ isLoading: true });
 
-    OpenWeatherMap.getForecast(location).then(function (temp) {
+    OpenWeatherMap.getForecast(location).then(function (data) {
       self.setState({
-        location:       location,
-        forecast:   temp,
+        location:   data.location,
+        forecast:   data.temp,
         isLoading:  false
       });
     }, function (errorMessage) {
