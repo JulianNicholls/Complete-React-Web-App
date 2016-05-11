@@ -5,11 +5,11 @@ var   app   = express();
 const PORT  = process.env.PORT || 3100;
 
 app.use(function (req, resp, next) {
-  if(req.headers['x-forwarded-proto'] === 'http') {
-    next;
+  if(req.headers['x-forwarded-proto'] === 'https') {
+    resp.redirect('http://' + req.hostname + req.url)
   }
   else {
-    resp.redirect('http://' + req.hostname + req.url)
+    next();
   }
 });
 
