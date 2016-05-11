@@ -13,8 +13,6 @@ I have successively started new directories during the course, in this order (I 
 * React-Weather
 * Weather-Foundation
 
-
 ## Status
 
 So far, Starting section 6 - Foundation.
-Skipping most of the Git, GitHub, and Heroku stuff, since I'm already using all three.
