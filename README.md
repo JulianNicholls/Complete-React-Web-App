@@ -1,7 +1,20 @@
 The code from The Complete React Web App Developer course from
 [Udemy](https://www.udemy.com/the-complete-react-web-app-developer-course).
 
-##Status
+## Directories
 
-So far, completed section 5.
+I have successively started new directories during the course, in this order (I think)
+
+* Hello-React
+* First-Component
+* Nested-Components
+* First-Webpack
+* React-Boilerplate
+* React-Weather
+* Weather-Foundation
+
+
+## Status
+
+So far, Starting section 6 - Foundation.
 Skipping most of the Git, GitHub, and Heroku stuff, since I'm already using all three.
