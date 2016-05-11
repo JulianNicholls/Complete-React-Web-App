@@ -2,12 +2,12 @@ var React = require('react');
 
 var WeatherForecast = React.createClass({
   render: function () {
-    var {city, forecast}  = this.props;
+    var {location, forecast}  = this.props;
 
-    if(city.length > 0) {
+    if(location.length > 0) {
       return (
         <div className="forecast">
-          {city}: {forecast}&deg;C
+          {location}: {forecast}&deg;C
         </div>
       )
     }

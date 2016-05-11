@@ -3,8 +3,8 @@ var axios = require('axios');
 const OPEN_WEATHERMAP_URL = 'http://api.openweathermap.org/data/2.5/weather?appid=9e7c67954b17f031bb8c2d367c8c6cda&units=metric';
 
 module.exports = {
-  getForecast: function (city) {
-    var encoded = encodeURIComponent(city),
+  getForecast: function (location) {
+    var encoded = encodeURIComponent(location),
         url     = `${OPEN_WEATHERMAP_URL}&q=${encoded}`;
 
     return axios.get(url).then(function (response) {

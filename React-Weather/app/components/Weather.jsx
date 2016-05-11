@@ -7,20 +7,20 @@ var OpenWeatherMap  = require('OpenWeatherMap');
 var Weather = React.createClass({
   getInitialState: function () {
     return {
-      city:      '',
+      location:  '',
       forecast:  '',
       isLoading: false
     };
   },
   render: function () {
-    var {isLoading, city, forecast} = this.state;
+    var {isLoading, location, forecast} = this.state;
 
     function renderMessage() {
       if(isLoading) {
         return <h4>Fetching weather...</h4>;
       }
-      else if(city && forecast) {
-        return <WeatherForecast forecast={forecast} city={city}/>;
+      else if(location && forecast) {
+        return <WeatherForecast forecast={forecast} location={location}/>;
       }
     }
     return (
@@ -31,16 +31,16 @@ var Weather = React.createClass({
       </div>
     )
   },
-  handleUpdates: function (city) {
+  handleUpdates: function (location) {
     var self = this;
 
     this.setState({
       isLoading: true
     });
 
-    OpenWeatherMap.getForecast(city).then(function (temp) {
+    OpenWeatherMap.getForecast(location).then(function (temp) {
       self.setState({
-        city:       city,
+        location:       location,
         forecast:   temp,
         isLoading:  false
       });
