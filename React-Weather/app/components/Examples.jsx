@@ -1,6 +1,9 @@
 var React = require('react');
 
 var Examples = (props) =>
-  <h2>Examples Component</h2>
+  <div>
+    <h2>Examples</h2>
+    <p>Here will be examples</p>
+  </div>
 
 module.exports = Examples;

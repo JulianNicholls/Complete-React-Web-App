@@ -1,10 +1,8 @@
 var React = require('react');
 
-// Total re-factor for a simple presentational Component
-
 var About = (props) =>
   <div>
-    <h2>About Component</h2>
+    <h2>About Weather</h2>
 
     <p>Gather weather data for a given location from <a href="http://openweathermap.org">OpenWeatherMap</a>.</p>
 
