@@ -4,16 +4,10 @@ var React = require('react');
 
 var WeatherForecast = ({location, forecast}) => {
   if(location.length > 0) {
-    return (
-      <div className="forecast">
-        {location}: {forecast}&deg;C
-      </div>
-    )
+    return <h3 className="text-center">It's {forecast}&deg;C in {location}</h3>
   }
   else {
-    return (
-      <div></div>
-    )
+    return <div></div>
   }
 }
 
