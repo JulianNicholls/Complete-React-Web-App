@@ -35,13 +35,13 @@ var Weather = React.createClass({
     return (
       <div className="weather">
         <h1 className="text-center page-title">Weather Oracle</h1>
-        <WeatherForm onUpdate={this.handleUpdates} />
+        <WeatherForm onUpdate={this.handleSearch} />
         {renderMessage()}
         {renderError()}
       </div>
     )
   },
-  handleUpdates: function (location) {
+  handleSearch: function (location) {
     var self = this;
 
     this.setState({
