@@ -19,4 +19,4 @@ I have successively started new directories during the course, in this order (I 
 
 ## Status
 
-So far, completed section 7 - Foundation and custom styling.
+So far, working through section 8 - Testing and component lifecycle.
