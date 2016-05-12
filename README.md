@@ -2,7 +2,7 @@
 The code from The Complete React Web App Developer course from
 [Udemy](https://www.udemy.com/the-complete-react-web-app-developer-course).
 
-Weather app available on [Heroku](http://weather-oracle.herokuapp.com/).
+The completed Weather app available at [Weather Oracle](http://weather-oracle.herokuapp.com/).
 
 ## Directories
 
@@ -18,4 +18,4 @@ I have successively started new directories during the course, in this order (I 
 
 ## Status
 
-So far, working through section 7 - Foundation and custom styling.
+So far, completed section 7 - Foundation and custom styling.
