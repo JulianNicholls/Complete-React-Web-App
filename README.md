@@ -18,4 +18,4 @@ I have successively started new directories during the course, in this order (I 
 
 ## Status
 
-So far, working through section 6 - Foundation.
+So far, working through section 7 - Foundation and custom styling.

@@ -2,7 +2,7 @@ var React = require('react');
 
 var About = (props) =>
   <div>
-    <h1 className="text-center">About Weather Oracle</h1>
+    <h1 className="text-center page-title">About Weather Oracle</h1>
 
     <p>Consult the oracle to find out the temperature for your chosen location,
       anywhere in the world. The weather information is taken
