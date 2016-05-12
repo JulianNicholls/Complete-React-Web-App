@@ -16,6 +16,7 @@ I have successively started new directories during the course, in this order (I 
 * React-Weather
 * Weather-Foundation
 * React-Boilerplate-2
+* React-Clocks
 
 ## Status
 
