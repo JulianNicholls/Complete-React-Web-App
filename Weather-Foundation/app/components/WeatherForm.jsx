@@ -12,9 +12,9 @@ var WeatherForm = React.createClass({
     );
   },
   onFormSubmit: function (e) {
-    e.preventDefault();
-
     var location = this.refs.location.value;
+
+    e.preventDefault();
 
     if(location.length > 0) {
       this.refs.location.value = '';

@@ -18,7 +18,7 @@ var Nav = React.createClass({
           <form onSubmit={this.onSearch}>
             <ul className="menu">
               <li>
-                <input type="search" placeholder="Search by location" />
+                <input type="search" ref="location" placeholder="Search by location" />
               </li>
               <li>
                 <button className="button hollow">Consult the Oracle</button>
@@ -30,9 +30,16 @@ var Nav = React.createClass({
     )
   },
   onSearch: function (e) {
+    var location = this.refs.location.value,
+        encoded   = encodeURIComponent(location);
+
     e.preventDefault();
 
-    alert("Not implemented yet.");
+    if(location && location.length > 0) {
+      this.refs.location.value = '';
+
+      window.location.hash = `#/?location=${encoded}`;
+    }
   }
 });
 
