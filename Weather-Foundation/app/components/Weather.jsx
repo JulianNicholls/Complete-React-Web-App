@@ -3,17 +3,19 @@ var React = require('react');
 var WeatherForm     = require('WeatherForm');
 var WeatherForecast = require('WeatherForecast');
 var OpenWeatherMap  = require('OpenWeatherMap');
+var ErrorModal      = require('ErrorModal');
 
 var Weather = React.createClass({
   getInitialState: function () {
     return {
       location:  '',
       forecast:  '',
-      isLoading: false
+      isLoading: false,
+      errorMessage: undefined
     };
   },
   render: function () {
-    var {isLoading, location, forecast} = this.state;
+    var {isLoading, location, forecast, errorMessage} = this.state;
 
     function renderMessage() {
       if(isLoading) {
@@ -23,18 +25,29 @@ var Weather = React.createClass({
         return <WeatherForecast forecast={forecast} location={location}/>;
       }
     }
+
+    function renderError() {
+      if(typeof errorMessage === 'string') {
+        return <ErrorModal message={errorMessage} />
+      }
+    }
+
     return (
       <div className="weather">
         <h1 className="text-center">Weather Oracle</h1>
         <WeatherForm onUpdate={this.handleUpdates} />
         {renderMessage()}
+        {renderError()}
       </div>
     )
   },
   handleUpdates: function (location) {
     var self = this;
 
-    this.setState({ isLoading: true });
+    this.setState({
+      isLoading:    true,
+      errorMessage: undefined
+    });
 
     OpenWeatherMap.getForecast(location).then(function (data) {
       self.setState({
@@ -42,9 +55,11 @@ var Weather = React.createClass({
         forecast:   data.temp,
         isLoading:  false
       });
-    }, function (errorMessage) {
-      self.setState({ isLoading: false });
-      alert(errorMessage);
+    }, function (e) {
+      self.setState({
+        isLoading: false,
+        errorMessage: e.message
+      });
     });
   }
 });
