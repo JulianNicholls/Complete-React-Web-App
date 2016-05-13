@@ -3,6 +3,11 @@
 
   ul {
     background: $nav-background;
+
+    li.active-link {
+      font-weight: bold;
+      color: #fff;
+    }
   }
 
   .menu-text {
