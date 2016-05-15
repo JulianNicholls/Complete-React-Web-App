@@ -12,7 +12,7 @@ describe('Controls', () => {
   });
 
   describe('render', () => {
-    it('should render Pause button when running', () => {
+    it('should render only Pause button when running', () => {
       let controls = TestUtils.renderIntoDocument(<Controls countdownStatus="running" />),
           $el      = $(ReactDOM.findDOMNode(controls)),
           $pause   = $el.find('button:contains(Pause)'),
@@ -22,7 +22,7 @@ describe('Controls', () => {
         expect($start.length).toBe(0);  // no Start
     });
 
-    it('should render Start button when paused', () => {
+    it('should render only Start button when paused', () => {
       let controls = TestUtils.renderIntoDocument(<Controls countdownStatus="paused" />),
           $el      = $(ReactDOM.findDOMNode(controls)),
           $pause   = $el.find('button:contains(Pause)'),
