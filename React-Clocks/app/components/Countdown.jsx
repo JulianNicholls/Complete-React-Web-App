@@ -1,8 +1,8 @@
-var React = require('react');
+import React from 'react';
 
-var Clock         = require('Clock');
-var CountdownForm = require('CountdownForm');
-var Controls      = require('Controls');
+import Clock         from 'Clock';
+import CountdownForm from 'CountdownForm';
+import Controls      from 'Controls';
 
 var Countdown = React.createClass({
   getInitialState: function () {

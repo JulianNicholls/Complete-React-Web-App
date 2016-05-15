@@ -1,10 +1,10 @@
-var React     = require('react');
-var ReactDOM  = require('react-dom');
-var expect    = require('expect');
-var $         = require('jQuery');
-var TestUtils = require('react-addons-test-utils');
+import React     from 'react';
+import ReactDOM  from 'react-dom';
+import expect    from 'expect';
+import $         from 'jQuery';
+import TestUtils from 'react-addons-test-utils';
 
-var Countdown = require('Countdown');
+import Countdown from 'Countdown';
 
 describe('Countdown', () => {
   it('should exist', () => {
@@ -13,7 +13,7 @@ describe('Countdown', () => {
 
   describe('handleSetCountdown', () => {
     it('should set state to running and count down', (done) => {
-      var countdown = TestUtils.renderIntoDocument(<Countdown />);
+      let countdown = TestUtils.renderIntoDocument(<Countdown />);
 
       countdown.handleSetCountdown(10);
 
@@ -27,7 +27,7 @@ describe('Countdown', () => {
     });
 
     it('should not let count to go below 0', (done) => {
-      var countdown = TestUtils.renderIntoDocument(<Countdown />);
+      let countdown = TestUtils.renderIntoDocument(<Countdown />);
 
       countdown.handleSetCountdown(1);
 

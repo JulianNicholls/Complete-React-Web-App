@@ -1,7 +1,7 @@
-var React     = require('react');
-var ReactDOM  = require('react-dom');
+import React     from 'react';
+import ReactDOM  from 'react-dom';
 
-var {Route, Router, IndexRoute, hashHistory} = require('react-router');
+import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 
 // Load Foundation and our own CSS
 require('style!css!foundation-sites/dist/foundation.min.css');
@@ -10,9 +10,9 @@ $(document).foundation();
 require('style!css!sass!applicationStyles');
 
 
-var Main      = require('Main');
-var Timer     = require('Timer');
-var Countdown = require('Countdown');
+import Main      from 'Main';
+import Timer     from 'Timer';
+import Countdown from 'Countdown';
 
 ReactDOM.render(
   <Router history={hashHistory}>

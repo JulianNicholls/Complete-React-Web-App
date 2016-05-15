@@ -1,10 +1,10 @@
-var React     = require('react');
-var ReactDOM  = require('react-dom');
-var expect    = require('expect');
-var $         = require('jQuery');
-var TestUtils = require('react-addons-test-utils');
+import React     from 'react';
+import ReactDOM  from 'react-dom';
+import expect    from 'expect';
+import $         from 'jQuery';
+import TestUtils from 'react-addons-test-utils';
 
-var CountdownForm = require('CountdownForm');
+import CountdownForm from 'CountdownForm';
 
 describe('CountdownForm', () => {
   it('should exist', () => {
@@ -12,7 +12,7 @@ describe('CountdownForm', () => {
   });
 
   it('should call onSetCountdown if valid seconds are entered', () => {
-    var spy   = expect.createSpy(),
+    let spy   = expect.createSpy(),
         cform = TestUtils.renderIntoDocument(<CountdownForm onSetCountdown={spy} />),
         $el   = $(ReactDOM.findDOMNode(cform));
 
@@ -23,7 +23,7 @@ describe('CountdownForm', () => {
   });
 
   it('should NOT call onSetCountdown if nothing is entered', () => {
-    var spy   = expect.createSpy(),
+    let spy   = expect.createSpy(),
         cform = TestUtils.renderIntoDocument(<CountdownForm onSetCountdown={spy} />),
         $el   = $(ReactDOM.findDOMNode(cform));
 
@@ -34,7 +34,7 @@ describe('CountdownForm', () => {
   });
 
   it('should NOT call onSetCountdown if INvalid seconds are entered', () => {
-    var spy   = expect.createSpy(),
+    let spy   = expect.createSpy(),
         cform = TestUtils.renderIntoDocument(<CountdownForm onSetCountdown={spy} />),
         $el   = $(ReactDOM.findDOMNode(cform));
 

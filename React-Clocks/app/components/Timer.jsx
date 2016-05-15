@@ -1,9 +1,9 @@
 import React from 'react';
 
-var Timer = React.createClass({
-  render: function () {
+class Timer extends React.Component {
+  render () {
     return <h1>Timer page</h1>
   }
-});
+}
 
 module.exports = Timer;

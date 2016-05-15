@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-var Nav = require('Nav');
+import Nav from 'Nav';
 
 var Main = (props) =>
   <div>

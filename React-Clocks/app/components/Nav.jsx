@@ -1,8 +1,5 @@
-import React from 'react';
-
+import React              from 'react';
 import {Link, IndexLink}  from 'react-router';
-
-// var {Link, IndexLink} = require('react-router');
 
 var Nav = () =>
   <div className="top-bar">
