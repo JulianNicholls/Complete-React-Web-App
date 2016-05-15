@@ -1,6 +1,7 @@
 import React from 'react';
 
 class Controls extends React.Component {
+var Controls = React.createClass({
   propTypes: {
     countdownStatus: React.PropTypes.string.isRequired
   }
@@ -25,5 +26,6 @@ class Controls extends React.Component {
     )
   }
 }
+});
 
 module.exports = Controls;
