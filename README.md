@@ -5,7 +5,7 @@ The code from The Complete React Web App Developer course from
 The completed Weather app is available at
 [Weather Oracle](http://weather-oracle.herokuapp.com/).
 
-The Work in Progress Clocks app is available at 
+The completed Clocks app is available at
 [Reactive Clocks](http://reactive-clocks.herokuapp.com).
 
 ## Directories
@@ -21,7 +21,8 @@ I have successively started new directories during the course, in this order (I 
 * Weather-Foundation
 * React-Boilerplate-2
 * React-Clocks
+* React-Boilerplate-3
 
 ## Status
 
-So far, working through section 8 - Testing and component lifecycle.
+So far, completed Clocks App and latest boilerplate in section 8.
