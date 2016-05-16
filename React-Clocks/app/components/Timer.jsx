@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Clock         from 'Clock';
-import Controls      from 'Controls';
+import Clock    from 'Clock';
+import Controls from 'Controls';
 
 var Timer = React.createClass({
   getInitialState: function () {
     return {
       count: 0,
-      countStatus: 'paused'
+      countStatus: 'stopped'
     };
   },
   componentWillUnmount: function () {
@@ -22,11 +22,8 @@ var Timer = React.createClass({
           break;
 
         case 'stopped':
-          this.setState({
-            count: 0,
-            countStatus: 'paused'
-          });
-          break;
+          this.setState({ count: 0 });
+          // Fall through
 
         case 'paused':
           clearInterval(this.timer);
@@ -47,8 +44,6 @@ var Timer = React.createClass({
     );
   },
   startTimer: function () {
-    this.setState({ countStatus: 'running' });
-
     this.timer = setInterval(() => {
       this.setState({ count: this.state.count + 1 });
     }, 1000);

@@ -11,11 +11,11 @@ describe('Timer', () => {
     expect(Timer).toExist();
   });
 
-  describe('componentWillUpdate', () => {
+  describe('handleStatusChange', () => {
     it('should set state to running and count up', (done) => {
       let timer = TestUtils.renderIntoDocument(<Timer />);
 
-      timer.startTimer();
+      timer.handleStatusChange('running');
 
       expect(timer.state.count).toBe(0);
 
@@ -23,31 +23,32 @@ describe('Timer', () => {
         expect(timer.state.count).toBe(1);
         expect(timer.state.countStatus).toBe('running');
         done();
-      }, 1001);   // Confident, much?
+      }, 1001);
     });
 
     it('should pause timer on paused status', (done) => {
       let timer = TestUtils.renderIntoDocument(<Timer />);
 
-      timer.startTimer();
+      timer.setState({ count: 6 })
+      timer.handleStatusChange('running');
       timer.handleStatusChange('paused')
 
       setTimeout(() => {
-        expect(timer.state.count).toBe(0);
+        expect(timer.state.count).toBe(6);
         expect(timer.state.countStatus).toBe('paused');
         done();
       }, 1001);
     });
 
-    it('should stop timer on stopped status', (done) => {
+    it('should reset timer on stopped status', (done) => {
       let timer = TestUtils.renderIntoDocument(<Timer />);
 
-      timer.startTimer();
+      timer.handleStatusChange('running');
       timer.handleStatusChange('stopped')
 
       setTimeout(() => {
         expect(timer.state.count).toBe(0);
-        expect(timer.state.countStatus).toBe('paused');
+        expect(timer.state.countStatus).toBe('stopped');
         done();
       }, 1001);
     });

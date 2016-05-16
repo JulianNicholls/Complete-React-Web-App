@@ -50,7 +50,7 @@ describe('Countdown', () => {
       }, 1001);
     });
 
-    it('should stop countdown on stopped status', (done) => {
+    it('should reset countdown on stopped status', (done) => {
       let countdown = TestUtils.renderIntoDocument(<Countdown />);
 
       countdown.handleSetCountdown(3);
