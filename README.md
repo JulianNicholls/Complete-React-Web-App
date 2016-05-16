@@ -8,6 +8,9 @@ The completed Weather app is available at
 The completed Clocks app is available at
 [Reactive Clocks](http://reactive-clocks.herokuapp.com).
 
+The Work in Progress To Do app is available at
+[Reactive Agenda](http://reactive-agenda.herokuapp.com).
+
 ## Directories
 
 I have successively started new directories during the course, in this order (I think)
