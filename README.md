@@ -3,7 +3,7 @@ The code from The Complete React Web App Developer course from
 [Udemy](https://www.udemy.com/the-complete-react-web-app-developer-course).
 
 The completed Weather app is available at
-[Weather Oracle](http://weather-oracle.herokuapp.com/).
+[Weather Oracle](http://weather-oracle.herokuapp.com).
 
 The completed Clocks app is available at
 [Reactive Clocks](http://reactive-clocks.herokuapp.com).
@@ -25,4 +25,4 @@ I have successively started new directories during the course, in this order (I 
 
 ## Status
 
-So far, completed Clocks App and latest boilerplate in section 8.
+So far, beginning section 9 - Todo App.

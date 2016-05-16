@@ -17,11 +17,11 @@ console.log(returnMe("Julian"));
 var person = {
   name: 'Julian',
   greet: function () {
-    names.forEach(function (name) {   // Changes this binding
+    names.forEach(function (name) {   // Changes 'this' binding
       console.log(this.name + ' says hi to ' + name);
     });
   },
-  greetArrow: function () {           // Retains this binding
+  greetArrow: function () {           // Retains 'this' binding
     names.forEach((name) => console.log(this.name + ' says hi to ' + name));
   }
 }
