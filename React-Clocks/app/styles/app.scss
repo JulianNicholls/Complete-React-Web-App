@@ -1,6 +1,13 @@
+@import "base/variables";
+
+// Foundation SCSS
+
+@import "base/foundation-settings";
+@import "foundation";
+@include foundation-everything;
+
 // Custom SCSS
 
-@import "base/variables";
 @import "components/navigation";
 @import "components/clock";
 @import "components/controls";
