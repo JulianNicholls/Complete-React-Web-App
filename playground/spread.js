@@ -14,14 +14,14 @@ var final  = [...groupB, 3, ...groupA]
 
 console.log(final);
 
-function greet(name, age) {
-  console.log(`Hello ${name}, you are ${age}`);
-}
-
 // Challenge 1
 
 var person  = ["Julian", 35];
 var person2 = ["Clare", 43];
+
+function greet(name, age) {
+  console.log(`Hello ${name}, you are ${age}`);
+}
 
 greet(...person);
 greet(...person2);
