@@ -24,5 +24,20 @@ module.exports = {
     catch (err) { }
 
     return [];
+  },
+  filterTasks: function (tasks, showCompleted, searchText) {
+    var filteredTasks = tasks;
+
+    // Filter completed
+
+    filteredTasks = filteredTasks.filter((task) => {
+      return !task.completed || showCompleted;
+    });
+    
+    // Filter by searchText
+
+    // Sort non-completed first
+
+    return filteredTasks;
   }
 };

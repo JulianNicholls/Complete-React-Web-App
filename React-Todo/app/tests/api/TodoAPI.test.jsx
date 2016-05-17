@@ -49,4 +49,25 @@ describe('TodoAPI', () => {
       expect(TodoAPI.getTasks()).toEqual(savedTasks);
     });
   });
+
+  describe('filterTasks', () => {
+    var tasks = [
+      { id: 72, text: "Some uncompleted task", completed: false },
+      { id: 83, text: "complete task", completed: true },
+      { id: 94, text: "Also uncompleted task", completed: false },
+      { id: 94, text: "Another complete task", completed: true },
+    ];
+
+    it('should return all items if showCompleted is true', () => {
+      let filteredTasks = TodoAPI.filterTasks(tasks, true, '');
+
+      expect(filteredTasks.length).toBe(4);
+    });
+
+    it('should return uncompleted items if showCompleted is false', () => {
+      let filteredTasks = TodoAPI.filterTasks(tasks, false, '');
+
+      expect(filteredTasks.length).toBe(2);
+    })
+  });
 });
