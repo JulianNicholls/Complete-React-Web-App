@@ -5,18 +5,18 @@ import TodoSearch from 'TodoSearch'
 import TodoList   from 'TodoList';
 import TodoForm   from 'TodoForm';
 
+import TodoAPI    from 'TodoAPI';
+
 var TodoApp = React.createClass({
   getInitialState: function () {
     return {
       showCompleted:  false,
       searchText:     '',
-      todos: [
-        { id: UUID(), text: "Walk the dog", completed: false },
-        { id: UUID(), text: 'Clean the yard', completed: true },
-        { id: UUID(), text: "Leave mail on porch", completed: true },
-        { id: UUID(), text: "Play videogames", completed: false }
-      ]
+      todos:          TodoAPI.getTasks()
     };
+  },
+  componentDidUpdate: function () {
+    TodoAPI.setTasks(this.state.todos);
   },
   render: function () {
     var {todos} = this.state;

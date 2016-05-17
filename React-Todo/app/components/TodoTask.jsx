@@ -5,10 +5,8 @@ var TodoTask = React.createClass({
     var {id, text, completed} = this.props;
 
     return (
-      <div onClick={() => {
-          this.props.onToggle(id);
-        }}>
-        <input type="checkbox" checked={completed} readOnly={true} />
+      <div onClick={() => { this.props.onToggle(id); }}>
+        <input type="checkbox" checked={completed} />
         {text}
       </div>
     )
