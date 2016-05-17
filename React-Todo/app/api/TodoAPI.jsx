@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from 'jQuery';
 
 module.exports = {
   setTasks: function (tasks) {
