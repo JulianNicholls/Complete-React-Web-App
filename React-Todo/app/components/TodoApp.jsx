@@ -1,11 +1,14 @@
 import React from 'react';
 
-import TodoList from 'TodoList';
-import TodoForm from 'TodoForm';
+import TodoSearch from 'TodoSearch'
+import TodoList   from 'TodoList';
+import TodoForm   from 'TodoForm';
 
 var TodoApp = React.createClass({
   getInitialState: function () {
     return {
+      showCompleted:  false,
+      searchText:     '',
       todos: [
         { id: 1, text: "Walk the dog" },
         { id: 2, text: 'Clean the yard' },
@@ -19,6 +22,7 @@ var TodoApp = React.createClass({
 
     return (
       <div>
+        <TodoSearch onSearch={this.handleSearch} />
         <TodoList todos={todos} />
         <TodoForm onNewTask={this.handleAddTask}/>
       </div>
@@ -26,6 +30,12 @@ var TodoApp = React.createClass({
   },
   handleAddTask: function (newEntry) {
     console.log('New Item:', newEntry);
+  },
+  handleSearch: function (showCompleted, searchText) {
+    this.setState({
+      showCompleted:  showCompleted,
+      searchText:     searchText.toLowerCase()
+    });
   }
 });
 

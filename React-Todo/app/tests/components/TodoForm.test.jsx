@@ -4,7 +4,7 @@ import expect    from 'expect';
 import $         from 'jQuery';
 import TestUtils from 'react-addons-test-utils';
 
-import TodoForm from 'TodoForm';
+import TodoForm  from 'TodoForm';
 
 describe('TodoForm', () => {
   it('should exist', () => {
