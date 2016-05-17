@@ -1,6 +1,6 @@
 import React from 'react';
 
-var TodoEntry = React.createClass({
+var TodoTask = React.createClass({
   render: function () {
     var {id, text} = this.props;
 
@@ -12,4 +12,4 @@ var TodoEntry = React.createClass({
   }
 });
 
-module.exports = TodoEntry;
+module.exports = TodoTask;

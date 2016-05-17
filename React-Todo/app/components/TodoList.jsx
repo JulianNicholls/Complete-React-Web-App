@@ -1,15 +1,15 @@
 import React from 'react';
 
-import TodoEntry from 'TodoEntry';
+import TodoTask from 'TodoTask';
 
 var TodoList = React.createClass({
   render: function () {
     let {todos} = this.props;
 
     const renderTodos = _ => {
-      return todos.map((entry) => {
+      return todos.map((task) => {
         return (
-          <TodoEntry key={entry.id} {...entry} />
+          <TodoTask key={task.id} {...task} />
         );
       });
     };
