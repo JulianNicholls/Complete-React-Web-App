@@ -23,4 +23,17 @@ describe('TodoApp', () => {
       expect(todoapp.state.todos[0].text).toBe(taskText);
     });
   });
+
+  describe('handleToggle', () => {
+    it('should toggle completion when called', () => {
+      var taskData = { id: 11, text: 'test toggling', completed: false },
+          todoapp  = TestUtils.renderIntoDocument(<TodoApp />);
+
+      todoapp.setState({ todos: [taskData] });
+
+      expect(todoapp.state.todos[0].completed).toBe(false)
+      todoapp.handleToggle(11);
+      expect(todoapp.state.todos[0].completed).toBe(true)
+    })
+  })
 });
