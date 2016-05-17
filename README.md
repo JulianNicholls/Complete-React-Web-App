@@ -21,10 +21,12 @@ I have successively started new directories during the course, in this order (I 
 * First-Webpack
 * React-Boilerplate
 * React-Weather
-* Weather-Foundation
+* Weather-Foundation - Final version of Weather App
 * React-Boilerplate-2
 * React-Clocks
 * React-Boilerplate-3
+* React-Todo
+* playground
 
 ## Status
 
