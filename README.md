@@ -8,7 +8,7 @@ The completed Weather app is available at
 The completed Clocks app is available at
 [Reactive Clocks](http://reactive-clocks.herokuapp.com).
 
-The Work in Progress To Do app is available at
+The Work in Progress Todo app is available at
 [Reactive Agenda](http://reactive-agenda.herokuapp.com).
 
 ## Directories
@@ -30,4 +30,17 @@ I have successively started new directories during the course, in this order (I 
 
 ## Status
 
-So far, beginning section 9 - Todo App.
+So far, section 9 - Todo App.
+
+### Important
+
+My code for the Todo App uses the word 'task' in almost all places where Andrew is using 'todo'.
+I have also made some of my other components and classes different from his.
+
+That includes
+
+* Todo -> TodoTask
+* AddTodo -> TodoForm
+
+Currently, TodoApp.state.todos is still called that, but at the end of section 9, I will probably
+go back and change it to TodoApp.state.tasks everywhere.
