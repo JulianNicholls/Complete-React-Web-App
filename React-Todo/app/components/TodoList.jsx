@@ -7,6 +7,12 @@ var TodoList = React.createClass({
     let {todos} = this.props;
 
     const renderTodos = _ => {
+      if(todos.length === 0) {
+        return (
+          <p className="container__message">There's nothing on your agenda</p>
+        );
+      }
+
       return todos.map((task) => {
         return (
           <TodoTask key={task.id} {...task} onToggle={this.props.onToggle} />

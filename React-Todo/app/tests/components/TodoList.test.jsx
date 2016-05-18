@@ -23,4 +23,12 @@ describe('TodoList', () => {
 
     expect(tasks.length).toBe(todos.length);
   });
+
+  it('should render a message if there are no (or no uncompleted) tasks', () => {
+    let todos     = [],
+        todolist  = TestUtils.renderIntoDocument(<TodoList todos={todos} />),
+        $el       = $(ReactDOM.findDOMNode(todolist));
+
+    expect($el.find(".container__message").length).toBe(1);
+  });
 });
