@@ -3,7 +3,7 @@ import React from 'react';
 var TodoForm = React.createClass({
   render: function () {
     return (
-      <div>
+      <div className="container__footer">
         <form ref="form" onSubmit={this.onSubmit} className="todo-form">
           <input type="text" ref="task" placeholder="What's on the agenda?" />
           <button className="button expanded">Add Task</button>

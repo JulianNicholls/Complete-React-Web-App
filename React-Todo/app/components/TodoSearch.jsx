@@ -3,7 +3,7 @@ import React from 'react';
 var TodoSearch = React.createClass({
   render: function () {
     return (
-      <div>
+      <div className="container__header">
         <div>
           <input type="search" ref="searchText" placeholder="Search tasks" onChange={this.onChange} />
         </div>
