@@ -12,17 +12,17 @@ describe('TodoApp', () => {
   });
 
   describe('handleAddTask', () => {
-    it('should add a task to the todos list and timestamp its creation', () => {
+    it('should add a task to the tasks list and timestamp its creation', () => {
       let taskText = "Add a new task",
           todoapp  = TestUtils.renderIntoDocument(<TodoApp />);
 
-      todoapp.setState({ todos: [] });
+      todoapp.setState({ tasks: [] });
       todoapp.handleAddTask(taskText);
 
-      expect(todoapp.state.todos.length).toBe(1);
-      expect(todoapp.state.todos[0].text).toBe(taskText);
-      expect(todoapp.state.todos[0].createdAt).toBeA('number');
-      expect(todoapp.state.todos[0].ccompletedAt).toNotExist();
+      expect(todoapp.state.tasks.length).toBe(1);
+      expect(todoapp.state.tasks[0].text).toBe(taskText);
+      expect(todoapp.state.tasks[0].createdAt).toBeA('number');
+      expect(todoapp.state.tasks[0].ccompletedAt).toNotExist();
     });
   });
 
@@ -31,27 +31,27 @@ describe('TodoApp', () => {
       var taskData = { id: 11, text: 'test toggling', completed: false, createdAt: 16000000, completedAt: undefined },
           todoapp  = TestUtils.renderIntoDocument(<TodoApp />);
 
-      todoapp.setState({ todos: [taskData] });
+      todoapp.setState({ tasks: [taskData] });
 
-      expect(todoapp.state.todos[0].completed).toBe(false);
+      expect(todoapp.state.tasks[0].completed).toBe(false);
 
       todoapp.handleToggle(11);
-      expect(todoapp.state.todos[0].completed).toBe(true);
-      expect(todoapp.state.todos[0].completedAt).toBeA('number');
+      expect(todoapp.state.tasks[0].completed).toBe(true);
+      expect(todoapp.state.tasks[0].completedAt).toBeA('number');
     });
 
     it('should remove completion date when going from completed to incomplete', () => {
       var taskData = { id: 11, text: 'test toggling', completed: false, createdAt: 16000000, completedAt: undefined },
           todoapp  = TestUtils.renderIntoDocument(<TodoApp />);
 
-      todoapp.setState({ todos: [taskData] });
+      todoapp.setState({ tasks: [taskData] });
 
       todoapp.handleToggle(11);
-      expect(todoapp.state.todos[0].completedAt).toBeA('number');
+      expect(todoapp.state.tasks[0].completedAt).toBeA('number');
 
       todoapp.handleToggle(11);
-      expect(todoapp.state.todos[0].completed).toBe(false);
-      expect(todoapp.state.todos[0].completedAt).toNotExist();
+      expect(todoapp.state.tasks[0].completed).toBe(false);
+      expect(todoapp.state.tasks[0].completedAt).toNotExist();
     });
   });
 });

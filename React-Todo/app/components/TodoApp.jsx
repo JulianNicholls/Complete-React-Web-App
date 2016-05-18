@@ -13,15 +13,15 @@ var TodoApp = React.createClass({
     return {
       showCompleted:  false,
       searchText:     '',
-      todos:          TodoAPI.getTasks()
+      tasks:          TodoAPI.getTasks()
     };
   },
   componentDidUpdate: function () {
-    TodoAPI.setTasks(this.state.todos);
+    TodoAPI.setTasks(this.state.tasks);
   },
   render: function () {
-    let {todos, showCompleted, searchText} = this.state,
-        filteredTasks = TodoAPI.filterTasks(todos, showCompleted, searchText);
+    let {tasks, showCompleted, searchText} = this.state,
+        filteredTasks = TodoAPI.filterTasks(tasks, showCompleted, searchText);
 
     return (
       <div>
@@ -31,7 +31,7 @@ var TodoApp = React.createClass({
         <div className="column small-centered small-11 medium-8 large-7">
           <div className="container">
             <TodoSearch onSearch={this.handleSearch} />
-            <TodoList todos={filteredTasks} onToggle={this.handleToggle} />
+            <TodoList tasks={filteredTasks} onToggle={this.handleToggle} />
             <TodoForm onNewTask={this.handleAddTask} />
           </div>
         </div>
@@ -41,7 +41,7 @@ var TodoApp = React.createClass({
   },
   handleAddTask: function (newTask) {
     this.setState({
-      todos: [...this.state.todos, {
+      tasks: [...this.state.tasks, {
           id:           UUID(),
           text:         newTask,
           completed:    false,
@@ -58,7 +58,7 @@ var TodoApp = React.createClass({
     });
   },
   handleToggle: function (id) {
-    var updatedList = this.state.todos.map((task) => {
+    var updatedList = this.state.tasks.map((task) => {
       if(task.id === id) {
         task.completed = !task.completed;
 
@@ -68,7 +68,7 @@ var TodoApp = React.createClass({
       return task;
     });
 
-    this.setState({ todos: updatedList });
+    this.setState({ tasks: updatedList });
   }
 });
 

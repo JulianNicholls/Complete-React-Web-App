@@ -14,20 +14,20 @@ describe('TodoSearch', () => {
   it("should call onChange when the search text changes", () => {
     let text       = "Dog",
         spy        = expect.createSpy(),
-        todosearch = TestUtils.renderIntoDocument(<TodoSearch onSearch={spy} />);
+        tasksearch = TestUtils.renderIntoDocument(<TodoSearch onSearch={spy} />);
 
-    todosearch.refs.searchText.value = text;
-    TestUtils.Simulate.change(todosearch.refs.searchText);
+    tasksearch.refs.searchText.value = text;
+    TestUtils.Simulate.change(tasksearch.refs.searchText);
 
     expect(spy).toHaveBeenCalledWith(false, text);
   });
 
   it("should call onChange when show completed changes", () => {
     let spy        = expect.createSpy(),
-        todosearch = TestUtils.renderIntoDocument(<TodoSearch onSearch={spy} />);
+        tasksearch = TestUtils.renderIntoDocument(<TodoSearch onSearch={spy} />);
 
-    todosearch.refs.showCompleted.checked = true;
-    TestUtils.Simulate.change(todosearch.refs.showCompleted);
+    tasksearch.refs.showCompleted.checked = true;
+    TestUtils.Simulate.change(tasksearch.refs.showCompleted);
 
     expect(spy).toHaveBeenCalledWith(true, '');
   });

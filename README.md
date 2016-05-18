@@ -30,7 +30,7 @@ I have successively started new directories during the course, in this order (I 
 
 ## Status
 
-So far, section 9 - Todo App.
+So far, completed section 9 - Todo App with localStorage.
 
 ### Important
 
@@ -39,8 +39,7 @@ I have also made some of my other components and classes different from his.
 
 That includes
 
+* TodoApp.state.todos -> TodoApp.state.tasks
 * Todo -> TodoTask
 * AddTodo -> TodoForm
-
-Currently, TodoApp.state.todos is still called that, but at the end of section 9, I will probably
-go back and change it to TodoApp.state.tasks everywhere.
+* TodoAPI.getTodos / setTodos -> TodoAPI.getTasks / setTasks

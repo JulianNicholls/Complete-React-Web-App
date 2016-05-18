@@ -4,16 +4,16 @@ import TodoTask from 'TodoTask';
 
 var TodoList = React.createClass({
   render: function () {
-    let {todos} = this.props;
+    let {tasks} = this.props;
 
     const renderTodos = _ => {
-      if(todos.length === 0) {
+      if(tasks.length === 0) {
         return (
           <p className="container__message">There's nothing on your agenda</p>
         );
       }
 
-      return todos.map((task) => {
+      return tasks.map((task) => {
         return (
           <TodoTask key={task.id} {...task} onToggle={this.props.onToggle} />
         );
