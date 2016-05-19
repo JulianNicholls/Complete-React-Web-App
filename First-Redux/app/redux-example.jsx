@@ -3,11 +3,32 @@ var redux = require('redux');
 console.log('Starting redux example');
 
 function reducer(state = { name: 'anonymous' }, action) {
+  switch(action.type) {
+    case 'CHANGE_NAME':
+      return {
+        ...state,
+        name: action.name
+      }
+
+    default:         // No recognised action
+      console.info('Unrecognised action', action.type);
+      return state;
+  }
+
+// No recognised actions
+
   return state;
 };
 
 var store = redux.createStore(reducer);
 
-var current = store.getState();
+console.log('Current State:', store.getState());
 
-console.log('Current State:', current);
+var action = {
+  type: 'CHANGE_NAME',
+  name: 'Andrew'
+};
+
+store.dispatch(action);
+
+console.log('Current State:', store.getState());
