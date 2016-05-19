@@ -5,57 +5,50 @@ var redux = require('redux');
 
 console.log('Starting redux example');
 
-var stateDefault = {
-  name: 'Anonymous',
-  hobbies: [],
-  movies: []
-};
-
 var nextHobbyId = 1;
 var nextMovieId = 1;
 
-var reducer = (state = stateDefault, action) => {
-  // state = state || {name: 'Anonymous'};
-
+var nameReducer = (state = 'anonymous', action) => {
   switch (action.type) {
     case 'CHANGE_NAME':
-      return { ...state, name: action.name };
+      return action.name;
 
+    default:         // THIS IS NOW VITAL, SINCE ALL REDUCERS ARE CALLED FOR ALL ACTIONS
+      return state;
+  }
+};
+
+var hobbiesReducer = (state = [], action) => {
+  switch(action.type) {
     case 'ADD_HOBBY':
-      return { ...state, hobbies: [
-          ...state.hobbies,
-          {
-            id:    nextHobbyId++,
-            hobby: action.hobby
-          }
-        ]
-      };
+      return [...state, { id: nextHobbyId++, hobby: action.hobby }]
 
     case 'REMOVE_HOBBY':
-      return { ...state,
-        hobbies: state.hobbies.filter((hobby) => hobby.id !== action.id)
-      };
-
-    case 'ADD_MOVIE':
-      return { ...state, movies: [
-          ...state.movies,
-          {
-            id:    nextMovieId++,
-            title: action.title,
-            genre: action.genre
-          }
-        ]
-      }
-
-    case 'REMOVE_MOVIE':
-      return { ...state,
-        movies: state.movies.filter((movie) => movie.id !== action.id)
-      };
+      return state.filter((hobby) => hobby.id !== action.id);
 
     default:
       return state;
   }
 };
+
+var moviesReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'ADD_MOVIE':
+      return [...state, { id: nextMovieId++, movie: action.movie }]
+
+    case 'REMOVE_MOVIE':
+      return state.filter((movie) => movie.id !== action.id);
+
+    default:
+      return state;
+  }
+};
+
+var reducer = redux.combineReducers({
+  name:     nameReducer,
+  hobbies:  hobbiesReducer,
+  movies:   moviesReducer
+});
 
 var store = redux.createStore(reducer, redux.compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
