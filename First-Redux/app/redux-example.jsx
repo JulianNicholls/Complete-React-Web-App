@@ -1,3 +1,5 @@
+// I didn't follow along with the examples in here, just in redux-todo-example
+
 var redux = require('redux');
 
 console.log('Starting redux example');

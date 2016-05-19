@@ -28,12 +28,20 @@ function reducer(state = baseState, action) {
   }
 };
 
-var store = redux.createStore(reducer);
+var store = redux.createStore(reducer, redux.compose(
+  window.devToolsExtension ? window.devToolsExtension() : (f) => f
+));
 
-console.log('Current State:', store.getState());
+var unsubscribe = store.subscribe(() => {
+  let state = store.getState();
+
+  console.log('sub Current State:', state);
+  document.getElementById('app').innerHTML = state.searchText;
+});
 
 store.dispatch({ type: 'CHANGE_SEARCH_TEXT', searchText: 'new search text' })
-console.log('Current State:', store.getState());
+
+// unsubscribe();
 
 store.dispatch({ type: 'TOGGLE_SHOW_COMPLETED' })
-console.log('Current State:', store.getState());
+store.dispatch({ type: 'CHANGE_SEARCH_TEXT', searchText: 'changed search text' })
