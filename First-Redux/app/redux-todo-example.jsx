@@ -1,5 +1,5 @@
-var redux = require('redux');
-var moment = require('moment');
+var redux    = require('redux');
+var moment   = require('moment');
 
 console.log('Starting redux-todo-example');
 
@@ -14,21 +14,14 @@ var nextTaskID = 1;
 function reducer(state = baseState, action) {
   switch(action.type) {
     case 'CHANGE_SEARCH_TEXT':
-      return {
-        ...state,
-        searchText: action.searchText
-      };
+      return { ...state, searchText: action.searchText };
 
     case 'TOGGLE_SHOW_COMPLETED':
-      return {
-        ...state,
-        showCompleted: !state.showCompleted
-      }
+      return { ...state, showCompleted: !state.showCompleted };
 
     case 'ADD_TASK':
-      return {
-        ...state,
-        tasks: [...state.tasks, {
+      return { ...state, tasks: [
+          ...state.tasks, {
             id:          nextTaskID++,
             text:        action.text,
             completed:   false,
@@ -36,6 +29,11 @@ function reducer(state = baseState, action) {
             completedAt: undefined
           }
         ]
+      }
+
+    case 'REMOVE_TASK':
+      return { ...state,
+        tasks: state.tasks.filter((task) => task.id !== action.id)
       }
 
     default:
@@ -56,8 +54,6 @@ var unsubscribe = store.subscribe(() => {
 });
 
 store.dispatch({ type: 'CHANGE_SEARCH_TEXT', searchText: 'new search text' })
-
-// unsubscribe();
 
 store.dispatch({ type: 'TOGGLE_SHOW_COMPLETED' })
 store.dispatch({ type: 'CHANGE_SEARCH_TEXT', searchText: 'newer search text' })
