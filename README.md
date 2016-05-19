@@ -13,7 +13,7 @@ The Work in Progress Todo app is available at
 
 ## Status
 
-So far, completed section 9 - Todo App with localStorage.
+So far, working through section 10 - Redux.
 
 ## Git Commits
 
