@@ -1,12 +1,15 @@
 var redux = require('redux');
+var moment = require('moment');
 
-console.log('Starting redux todo example');
+console.log('Starting redux-todo-example');
 
 const baseState = {
   searchText:     '',
   showCompleted:  false,
   tasks:          []
 };
+
+var nextTaskID = 1;
 
 function reducer(state = baseState, action) {
   switch(action.type) {
@@ -20,6 +23,19 @@ function reducer(state = baseState, action) {
       return {
         ...state,
         showCompleted: !state.showCompleted
+      }
+
+    case 'ADD_TASK':
+      return {
+        ...state,
+        tasks: [...state.tasks, {
+            id:          nextTaskID++,
+            text:        action.text,
+            completed:   false,
+            createdAt:   moment().unix(),
+            completedAt: undefined
+          }
+        ]
       }
 
     default:
@@ -44,4 +60,6 @@ store.dispatch({ type: 'CHANGE_SEARCH_TEXT', searchText: 'new search text' })
 // unsubscribe();
 
 store.dispatch({ type: 'TOGGLE_SHOW_COMPLETED' })
-store.dispatch({ type: 'CHANGE_SEARCH_TEXT', searchText: 'changed search text' })
+store.dispatch({ type: 'CHANGE_SEARCH_TEXT', searchText: 'newer search text' })
+
+store.dispatch({ type: 'ADD_TASK', text: 'Mow the lawn' });
