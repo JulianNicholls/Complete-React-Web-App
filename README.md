@@ -36,6 +36,7 @@ I have successively started new directories during the course, in this order (I 
 * React-Boilerplate-3
 * React-Todo          - WIP Todo App
 * playground          - short asides from lectures
+* First-Redux
 
 ### Important Notes for Todo App
 
@@ -87,5 +88,5 @@ would advise using it to everyone.
 
 ## Questions
 
-If you have any questions about this repository, or any other, please don't hesitate
+If you have any questions about this repository, or any others of mine, please don't hesitate
 to contact me.

@@ -10,6 +10,6 @@ require('style!css!sass!applicationStyles');
 
 
 ReactDOM.render(
-  <p>Boilerplate 3</p>,
+  <h1>React Boilerplate 3</h1>,
   document.getElementById('app')
 );
