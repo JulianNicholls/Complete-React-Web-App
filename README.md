@@ -13,7 +13,7 @@ The Work in Progress Todo app is available at
 
 ## Status
 
-So far, Completed section 10 - Redux.
+So far, Working through section 10 - Redux, started re-factoring Todo App.
 
 ## Git Commits
 
@@ -34,9 +34,10 @@ I have successively started new directories during the course, in this order (I 
 * React-Boilerplate-2
 * React-Clocks        - Final version of Clocks App
 * React-Boilerplate-3
-* React-Todo          - WIP Todo App
+* React-Todo          - Todo App, using localStorage
 * playground          - short asides from lectures
 * First-Redux
+* Todo-Redux          - WIP Todo App, using Redux
 
 ### Important Notes for Todo App
 
@@ -72,7 +73,7 @@ So, for example it is now 18:22 on 18 May 2016, so these timestamps would be dis
 
 ...and so on.
 
-This is something that I have done myself in the past in
+This is something that I have written myself in the past in
 [PHP](https://github.com/JulianNicholls/RSS-Viewer/blob/master/humantime.php)
 and
 [Ruby](https://github.com/JulianNicholls/ruby-rss-reader/blob/master/humantime.rb)

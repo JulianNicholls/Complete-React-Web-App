@@ -1,0 +1,13 @@
+@import "base/variables";
+
+// Foundation SCSS
+
+@import "base/foundation-settings";
+@import "foundation";
+@include foundation-everything;
+
+// Custom SCSS
+
+@import "components/container";
+@import "components/page-title";
+@import "components/task";
