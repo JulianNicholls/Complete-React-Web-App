@@ -43,6 +43,20 @@ I have successively started new directories during the course, in this order (I 
 
 I have made a few modifications compared with Andrew's version.
 
+#### import vs require
+
+I have used import where possible, e.g.
+
+```
+var React = require('react');
+```
+
+becomes
+
+```
+import React from 'react';
+```
+
 #### todo vs task
 
 My code for the Todo App uses the word 'task' in almost all places where Andrew is using 'todo'.
