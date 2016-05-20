@@ -1,12 +1,8 @@
-// I didn't follow along with most the examples in here,
-// just in redux-todo-example, so this is largely a copy of Andrew's file
-
 var redux = require('redux');
 
 console.log('Starting redux example');
 
-var nextHobbyId = 1;
-var nextMovieId = 1;
+// Name reducer and action generator
 
 var nameReducer = (state = 'anonymous', action) => {
   switch (action.type) {
@@ -17,6 +13,14 @@ var nameReducer = (state = 'anonymous', action) => {
       return state;
   }
 };
+
+var changeName = (name) => {
+  return { type: 'CHANGE_NAME', name };
+};
+
+// Hobbies reducer and function generators
+
+var nextHobbyId = 1;
 
 var hobbiesReducer = (state = [], action) => {
   switch(action.type) {
@@ -31,10 +35,27 @@ var hobbiesReducer = (state = [], action) => {
   }
 };
 
+var addHobby = (hobby) => {
+  return { type: 'ADD_HOBBY', hobby };
+};
+
+var removeHobby = (id) => {
+  return { type: 'REMOVE_HOBBY', id };
+};
+
+// Movies reducer and function generators
+
+var nextMovieId = 1;
+
 var moviesReducer = (state = [], action) => {
   switch(action.type) {
     case 'ADD_MOVIE':
-      return [...state, { id: nextMovieId++, movie: action.movie }]
+      return [...state, {
+          id: nextMovieId++,
+          title: action.title,
+          genre: action.genre
+        }
+      ];
 
     case 'REMOVE_MOVIE':
       return state.filter((movie) => movie.id !== action.id);
@@ -42,6 +63,14 @@ var moviesReducer = (state = [], action) => {
     default:
       return state;
   }
+};
+
+var addMovie = (title, genre) => {
+  return { type: 'ADD_MOVIE', title, genre };
+};
+
+var removeMovie = (id) => {
+  return { type: 'REMOVE_MOVIE', id };
 };
 
 var reducer = redux.combineReducers({
@@ -67,14 +96,14 @@ var unsubscribe = store.subscribe(() => {
 var currentState = store.getState();
 console.log('currentState', currentState);
 
-store.dispatch({ type: 'CHANGE_NAME', name: 'Andrew' });
+store.dispatch(changeName('Andrew'));
 
-store.dispatch({ type: 'ADD_HOBBY', hobby: 'Running' });
-store.dispatch({ type: 'ADD_HOBBY', hobby: 'Walking' });
-store.dispatch({ type: 'REMOVE_HOBBY', id: 2 });
+store.dispatch(addHobby('Running'));
+store.dispatch(addHobby('Walking'));
+store.dispatch(removeHobby(2));
 
-store.dispatch({ type: 'CHANGE_NAME', name: 'Emily' });
+store.dispatch(changeName('Emily'));
 
-store.dispatch({ type: 'ADD_MOVIE', title: 'Mad Max', genre: 'Action' });
-store.dispatch({ type: 'ADD_MOVIE', title: 'Ghpstbusters', genre: 'Comedy' });
-store.dispatch({ type: 'REMOVE_MOVIE', id: 1 });
+store.dispatch(addMovie('Mad Max', 'Action'));
+store.dispatch(addMovie('Ghostbusters', 'Comedy'));
+store.dispatch(removeMovie(1));
