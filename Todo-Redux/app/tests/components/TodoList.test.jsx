@@ -1,11 +1,15 @@
-import React     from 'react';
-import ReactDOM  from 'react-dom';
-import expect    from 'expect';
-import $         from 'jQuery';
-import TestUtils from 'react-addons-test-utils';
+import React      from 'react';
+import ReactDOM   from 'react-dom';
+import {Provider} from 'react-redux';
+
+import expect     from 'expect';
+import $          from 'jQuery';
+import TestUtils  from 'react-addons-test-utils';
+
+import {configure} from 'configureStore';
 
 import ConnectedTodoList, {TodoList} from 'TodoList';
-import TodoTask from 'TodoTask';
+import ConnectedTodoTask, {TodoTask} from 'TodoTask';
 
 describe('TodoList', () => {
   it('should exist', () => {
@@ -14,12 +18,32 @@ describe('TodoList', () => {
 
   it('should render the correct number of tasks', () => {
     let tasks = [
-      { id: 1, text: 'do something'},
-      { id: 2, text: 'do something else'},
+      {
+        id:          1,
+        text:        'do something',
+        createdAt:   500,
+        completed:   false,
+        completedAt: undefined
+      },
+      {
+        id:          2,
+        text:        'do something else',
+        createdAt:   500,
+        completed:   false,
+        completedAt: undefined
+      }
     ];
 
-    let todolist  = TestUtils.renderIntoDocument(<TodoList tasks={tasks} />),
-        todotasks = TestUtils.scryRenderedComponentsWithType(todolist, TodoTask);
+    let store = configure({
+          tasks
+        }),
+        provider  = TestUtils.renderIntoDocument(
+          <Provider store={store}>
+            <ConnectedTodoList />
+          </Provider>
+        ),
+        todolist  = TestUtils.scryRenderedComponentsWithType(provider, ConnectedTodoList)[0],
+        todotasks = TestUtils.scryRenderedComponentsWithType(todolist, ConnectedTodoTask);
 
     expect(todotasks.length).toBe(tasks.length);
   });
