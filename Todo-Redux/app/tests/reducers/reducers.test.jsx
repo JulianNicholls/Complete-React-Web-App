@@ -42,6 +42,8 @@ describe('Reducers', () => {
           toggleAction  = { type: 'TOGGLE_TASK', id: tasks[0].id },
           state         = tasksReducer(df(tasks), df(toggleAction));
 
+      // Explicitly toggle it both ways for good measure
+
       expect(state[0].completed).toBe(true);
       expect(state[0].completedAt).toExist();
 

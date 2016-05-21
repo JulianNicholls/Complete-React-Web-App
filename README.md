@@ -1,4 +1,5 @@
 # React Course
+
 The code from The Complete React Web App Developer course from
 [Udemy](https://www.udemy.com/the-complete-react-web-app-developer-course).
 
@@ -72,7 +73,7 @@ These include
 #### moment-examples.js
 
 Because my playground directory is in the root of the repository, it won't work where it is.
-Copy moment-examples.js into the React-Todo directory and run it from there.
+Copy `moment-examples.js` into the React-Todo directory and run it from there.
 
 #### Timestamps
 
