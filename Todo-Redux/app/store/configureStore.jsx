@@ -1,5 +1,4 @@
-import {combineReducers, createStore, compose} from 'redux';
-
+import {combineReducers, createStore, compose}                 from 'redux';
 import {searchTextReducer, showCompletedReducer, tasksReducer} from 'reducers';
 
 export var configure = () => {

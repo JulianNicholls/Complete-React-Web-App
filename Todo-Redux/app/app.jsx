@@ -1,5 +1,6 @@
-import React     from 'react';
-import ReactDOM  from 'react-dom';
+import React       from 'react';
+import ReactDOM    from 'react-dom';
+import {Provider}  from 'react-redux';
 
 import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 
@@ -13,9 +14,7 @@ store.subscribe(() => {
   console.log('New State:', store.getState());
 });
 
-store.dispatch(addTask('Clean the yard'));
-store.dispatch(setSearchText('yard'));
-store.dispatch(toggleShowCompleted());
+store.dispatch(addTask('Mow the lawn'));
 
 // Load Foundation and our own CSS
 $(document).foundation();
@@ -24,6 +23,8 @@ require('style!css!sass!applicationStyles');
 
 
 ReactDOM.render(
-  <TodoApp />,
+  <Provider store={store}>
+    <TodoApp />
+  </Provider>,
   document.getElementById('app')
 );

@@ -31,7 +31,7 @@ var TodoApp = React.createClass({
         <div className="column small-centered small-11 medium-8 large-7">
           <div className="container">
             <TodoSearch onSearch={this.handleSearch} />
-            <TodoList tasks={filteredTasks} onToggle={this.handleToggle} />
+            <TodoList />
             <TodoForm onNewTask={this.handleAddTask} />
           </div>
         </div>
@@ -56,19 +56,6 @@ var TodoApp = React.createClass({
       showCompleted:  showCompleted,
       searchText:     searchText
     });
-  },
-  handleToggle: function (id) {
-    var updatedList = this.state.tasks.map((task) => {
-      if(task.id === id) {
-        task.completed = !task.completed;
-
-        task.completedAt = task.completed ? moment().unix() : undefined;
-      }
-
-      return task;
-    });
-
-    this.setState({ tasks: updatedList });
   }
 });
 
