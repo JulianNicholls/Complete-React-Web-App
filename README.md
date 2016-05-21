@@ -46,15 +46,18 @@ I have made a few modifications compared with Andrew's version.
 
 #### import vs require
 
-I have used import where possible, e.g.
+I have used `import` much earlier than Andrew. Almost all of the `require`s are already
+`import`s by the time of lecture 120 where he changes some `require`s to `import`s in
+order to differentiate between the default exports and the explicitly exported
+unconnected components.
 
 ```
+Simple example:
+
 var React = require('react');
-```
 
 becomes
 
-```
 import React from 'react';
 ```
 

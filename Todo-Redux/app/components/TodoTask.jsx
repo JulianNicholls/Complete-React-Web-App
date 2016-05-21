@@ -4,7 +4,7 @@ import moment     from 'moment';
 
 import {toggleTask} from 'actions';
 
-var TodoTask = React.createClass({
+export var TodoTask = React.createClass({
   render: function () {
     var {id, text, completed, createdAt, completedAt, dispatch} = this.props,
         taskClassName = completed ? 'task task-completed' : 'task',
@@ -43,4 +43,4 @@ var TodoTask = React.createClass({
   }
 });
 
-module.exports = connect()(TodoTask);
+export default connect()(TodoTask);
