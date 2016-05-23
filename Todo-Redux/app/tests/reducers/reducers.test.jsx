@@ -52,5 +52,21 @@ describe('Reducers', () => {
       expect(state[0].completed).toBe(false);
       expect(state[0].completedAt).toNotExist();
     });
+
+    it('should load tasks from an array', () => {
+      let tasks  = [{
+        id:          99,
+        text:        'Walk the dog',
+        createdAt:   115,
+        completed:   false,
+        completedAt: undefined
+      }];
+
+      let loadAction = { type: 'LOAD_TASKS', tasks },
+          newTasks   = tasksReducer(df([]), df(loadAction));
+
+      expect(newTasks.length).toBe(1);
+      expect(newTasks).toEqual(tasks);
+    })
   });
 });

@@ -23,6 +23,9 @@ export var showCompletedReducer = (state = false, action) => {
 
 export var tasksReducer = (state = [], action) => {
   switch(action.type) {
+    case 'LOAD_TASKS':
+      return [...state, ...action.tasks];
+
     case 'ADD_TASK':
       return [...state, {
           id:           UUID(),

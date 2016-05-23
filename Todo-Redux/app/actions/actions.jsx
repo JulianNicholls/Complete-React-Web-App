@@ -6,6 +6,10 @@ export var toggleShowCompleted = () => {
   return { type: 'TOGGLE_SHOW_COMPLETED' };
 };
 
+export var loadTasks = (tasks) => {
+  return { type: 'LOAD_TASKS', tasks };
+};
+
 export var addTask = (text) => {
   return { type: 'ADD_TASK', text };
 };
