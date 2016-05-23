@@ -1,11 +1,13 @@
-import React from 'react';
+import React     from 'react';
+import {connect} from 'react-redux';
+import {addTask} from 'actions';
 
-var TodoForm = React.createClass({
+export var TodoForm = React.createClass({
   render: function () {
     return (
       <div className="container__footer">
         <form ref="form" onSubmit={this.onSubmit} className="todo-form">
-          <input type="text" ref="task" placeholder="What's on the agenda?" />
+          <input type="text" ref="taskText" placeholder="What's on the agenda?" />
           <button className="button expanded">Add Task</button>
         </form>
       </div>
@@ -14,17 +16,18 @@ var TodoForm = React.createClass({
   onSubmit: function (e) {
     e.preventDefault();
 
-    let task = this.refs.task.value;
+    let {dispatch} = this.props,
+        taskText   = this.refs.taskText.value;
 
-    if(task.length > 0) {
-      this.refs.task.value = '';
+    if(taskText.length > 0) {
+      this.refs.taskText.value = '';
 
-      this.props.onNewTask(task);
+      dispatch(addTask(taskText));
     }
     else {
-      this.refs.task.focus();
+      this.refs.taskText.focus();
     }
   }
 });
 
-module.exports = TodoForm;
+export default connect()(TodoForm);
