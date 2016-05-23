@@ -6,13 +6,23 @@ import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 
 import TodoApp from 'TodoApp';
 
-import {setSearchText, toggleShowCompleted, addTask} from 'actions';
+import {loadTasks} from 'actions';
+
+import TodoAPI from 'TodoAPI';
 
 var store = require('configureStore').configure();
 
 store.subscribe(() => {
+  var state = store.getState();
+
+  TodoAPI.setTasks(state.tasks);
+
   console.log('New State:', store.getState());
 });
+
+var initialTasks = TodoAPI.getTasks();
+
+store.dispatch(loadTasks(initialTasks));
 
 // Load Foundation and our own CSS
 $(document).foundation();
