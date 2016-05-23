@@ -14,8 +14,6 @@ store.subscribe(() => {
   console.log('New State:', store.getState());
 });
 
-store.dispatch(addTask('Mow the lawn'));
-
 // Load Foundation and our own CSS
 $(document).foundation();
 
