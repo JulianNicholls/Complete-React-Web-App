@@ -9,7 +9,7 @@ export var configure = (initialState = {}) => {
   });
 
   var store = createStore(reducer, initialState, compose(
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    window.devToolsExtension ? window.devToolsExtension() : (f) => f
   ));
 
   return store;
