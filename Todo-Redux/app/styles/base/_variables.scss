@@ -1,8 +1,8 @@
 // Colours
 
 $dark-grey: #333333;
-$light-grey: #fafafa;
-$light-grey-border: #eeeeee;
+$light-grey: #fafaff;
+$light-grey-border: #d8d8d8;
 $light-color: #aaaaaa;
 
 // Navigation Colours
@@ -10,3 +10,11 @@ $light-color: #aaaaaa;
 $nav-background: $dark-grey;
 $nav-text-color: white;
 $active-link-color: #8cf;
+
+// Task priority colours
+
+$pri-1-color: #7f0000;
+$pri-2-color: #7f5000;
+$pri-3-color: #467f00;
+$pri-4-color: #007f72;
+$pri-5-color: #00007f;
