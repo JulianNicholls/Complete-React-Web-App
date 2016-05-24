@@ -1,12 +1,12 @@
-import React      from 'react';
-import {connect}  from 'react-redux';
-import moment     from 'moment';
+import React        from 'react';
+import { connect }  from 'react-redux';
+import moment       from 'moment';
 
-import {toggleTask} from 'actions';
+import { toggleTask } from 'actions';
 
 export var TodoTask = React.createClass({
-  render: function () {
-    var {id, text, completed, createdAt, completedAt, dispatch} = this.props,
+  render() {
+    var { id, text, completed, createdAt, completedAt, dispatch } = this.props,
         taskClassName = completed ? 'task task-completed' : 'task',
         now = moment().unix();
 

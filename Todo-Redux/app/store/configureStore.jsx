@@ -1,7 +1,7 @@
-import {combineReducers, createStore, compose}                 from 'redux';
-import {searchTextReducer, showCompletedReducer, tasksReducer} from 'reducers';
+import { combineReducers, createStore, compose }                 from 'redux';
+import { searchTextReducer, showCompletedReducer, tasksReducer } from 'reducers';
 
-export var configure = (initialState = {}) => {
+export function configure(initialState = {}) {
   var reducer = combineReducers({
     searchText:     searchTextReducer,
     showCompleted:  showCompletedReducer,

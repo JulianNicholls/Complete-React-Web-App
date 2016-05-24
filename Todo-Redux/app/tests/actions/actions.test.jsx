@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import {setSearchText, toggleShowCompleted, loadTasks, addTask, toggleTask} from 'actions';
+import { setSearchText, toggleShowCompleted, loadTasks, addTask, toggleTask } from 'actions';
 
 describe('Actions', () => {
   it('should generate search text action', () => {

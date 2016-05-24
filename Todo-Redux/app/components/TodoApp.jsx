@@ -7,7 +7,7 @@ import TodoList   from 'TodoList';
 import TodoForm   from 'TodoForm';
 
 var TodoApp = React.createClass({
-  render: function () {
+  render() {
     return (
       <div>
         <h1 className="page-title">Reactive Agenda</h1>

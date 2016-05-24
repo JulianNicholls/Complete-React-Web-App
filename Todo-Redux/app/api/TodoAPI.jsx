@@ -1,7 +1,7 @@
 import $ from 'jQuery';
 
 module.exports = {
-  setTasks: function (tasks) {
+  setTasks(tasks) {
     if(!$.isArray(tasks)) {
       return;
     }
@@ -10,7 +10,7 @@ module.exports = {
 
     return tasks;
   },
-  getTasks: function () {
+  getTasks() {
     let strTasks  = localStorage.getItem('tasks'),
         tasks;
 
@@ -25,7 +25,7 @@ module.exports = {
 
     return [];
   },
-  filterTasks: function (tasks, showCompleted, searchText) {
+  filterTasks(tasks, showCompleted, searchText) {
     var filteredTasks = tasks;
 
     // Filter completed

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {addTask} from 'actions';
 
 export var TodoForm = React.createClass({
-  render: function () {
+  render() {
     return (
       <div className="container__footer">
         <form ref="form" onSubmit={this.onSubmit} className="todo-form">
@@ -13,7 +13,7 @@ export var TodoForm = React.createClass({
       </div>
     );
   },
-  onSubmit: function (e) {
+  onSubmit(e) {
     e.preventDefault();
 
     let {dispatch} = this.props,

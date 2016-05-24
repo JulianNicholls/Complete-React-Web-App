@@ -1,19 +1,19 @@
-export var setSearchText = (searchText) => {
+export function setSearchText(searchText) {
   return { type: 'SET_SEARCH_TEXT', searchText };
 };
 
-export var toggleShowCompleted = () => {
+export function toggleShowCompleted() {
   return { type: 'TOGGLE_SHOW_COMPLETED' };
 };
 
-export var loadTasks = (tasks) => {
+export function loadTasks(tasks) {
   return { type: 'LOAD_TASKS', tasks };
 };
 
-export var addTask = (text) => {
+export function addTask(text) {
   return { type: 'ADD_TASK', text };
 };
 
-export var toggleTask = (id) => {
+export function toggleTask(id) {
   return { type: 'TOGGLE_TASK', id };
 };

@@ -1,7 +1,7 @@
 import UUID   from 'node-uuid';
 import moment from 'moment';
 
-export var searchTextReducer = (state = '', action) => {
+export function searchTextReducer(state = '', action) {
   switch(action.type) {
     case 'SET_SEARCH_TEXT':
       return action.searchText;
@@ -11,7 +11,7 @@ export var searchTextReducer = (state = '', action) => {
   }
 };
 
-export var showCompletedReducer = (state = false, action) => {
+export function showCompletedReducer(state = false, action) {
   switch(action.type) {
     case 'TOGGLE_SHOW_COMPLETED':
       return !state;
@@ -21,7 +21,7 @@ export var showCompletedReducer = (state = false, action) => {
   }
 };
 
-export var tasksReducer = (state = [], action) => {
+export function tasksReducer(state = [], action) {
   switch(action.type) {
     case 'LOAD_TASKS':
       return [...state, ...action.tasks];

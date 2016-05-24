@@ -1,11 +1,11 @@
-import React     from 'react';
-import {connect} from 'react-redux';
+import React       from 'react';
+import { connect } from 'react-redux';
 
-import {setSearchText, toggleShowCompleted} from 'actions';
+import { setSearchText, toggleShowCompleted } from 'actions';
 
 export var TodoSearch = React.createClass({
-  render: function () {
-    let {dispatch, showCompleted, searchText} = this.props
+  render() {
+    let { dispatch, showCompleted, searchText } = this.props
     return (
       <div className="container__header">
         <div>

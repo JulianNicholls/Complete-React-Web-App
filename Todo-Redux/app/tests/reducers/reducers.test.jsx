@@ -1,7 +1,7 @@
 import expect from 'expect';
 import df     from 'deep-freeze-strict';
 
-import {searchTextReducer, showCompletedReducer, tasksReducer} from 'reducers';
+import { searchTextReducer, showCompletedReducer, tasksReducer } from 'reducers';
 
 describe('Reducers', () => {
   describe('searchTextReducer', () => {
