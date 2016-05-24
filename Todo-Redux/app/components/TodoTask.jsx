@@ -6,7 +6,7 @@ import { toggleTask } from 'actions';
 
 export var TodoTask = React.createClass({
   render() {
-    var { id, text, completed, createdAt, completedAt, dispatch } = this.props,
+    var { id, text, completed, createdAt, completedAt, dispatch, priority } = this.props,
         taskClassName = completed ? 'task task-completed' : 'task',
         now = moment().unix();
 
@@ -35,7 +35,7 @@ export var TodoTask = React.createClass({
           <input type="checkbox" checked={completed} />
         </div>
         <div>
-          <p>{text}</p>
+          <p className={`priority-${priority}`}>{text}</p>
           <p className="task__subtext">{renderDate()}</p>
         </div>
       </div>
