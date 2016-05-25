@@ -15,36 +15,31 @@
 
   &:hover {
     background: #f0f0f0;
+
+    .remove {
+      display: block;
+    }
   }
 }
 
-.priority-1 {
-  color: $pri-1-color;
-}
+.priority-1 { color: $pri-1-color; }
+.priority-2 { color: $pri-2-color; }
+.priority-3 { color: $pri-3-color; }
+.priority-4 { color: $pri-4-color; }
+.priority-5 { color: $pri-5-color; }
 
-.priority-2 {
-  color: $pri-2-color;
-}
-
-.priority-3 {
-  color: $pri-3-color;
-}
-
-.priority-4 {
-  color: $pri-4-color;
-}
-
-.priority-5 {
-  color: $pri-5-color;
+.remove {
+  color: Red;
+//  display: none;
 }
 
 .task__subtext {
   color: #999999;
-  font-size: 90%;
+  font-size: 85%;
 }
 
 .task-completed {
-  p, .task__subtext {
+  p {
     color: $light-color;
     text-decoration: line-through;
   }

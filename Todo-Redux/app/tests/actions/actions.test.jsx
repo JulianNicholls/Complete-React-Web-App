@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import { setSearchText, toggleShowCompleted, loadTasks, addTask, toggleTask } from 'actions';
+import { setSearchText, toggleShowCompleted, loadTasks, addTask, toggleTask, removeTask } from 'actions';
 
 describe('Actions', () => {
   it('should generate search text action', () => {
@@ -34,8 +34,8 @@ describe('Actions', () => {
   });
 
   it('should generate add task action', () => {
-    let action = { type: 'ADD_TASK', text: 'Walk the dog' },
-        resp   = addTask('Walk the dog');
+    let action = { type: 'ADD_TASK', text: 'Walk the dog', priority: 1 },
+        resp   = addTask('Walk the dog', 1);
 
     expect(resp).toEqual(action);
   });
@@ -44,6 +44,14 @@ describe('Actions', () => {
     let id     = 753,
         action = { type: 'TOGGLE_TASK', id },
         resp   = toggleTask(id);
+
+    expect(resp).toEqual(action);
+  });
+
+  it('should generate remove task action', () => {
+    let id     = 753,
+        action = { type: 'REMOVE_TASK', id },
+        resp   = removeTask(id);
 
     expect(resp).toEqual(action);
   });

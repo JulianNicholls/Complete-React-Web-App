@@ -17,3 +17,7 @@ export function addTask(text, priority) {
 export function toggleTask(id) {
   return { type: 'TOGGLE_TASK', id };
 };
+
+export function removeTask(id) {
+  return { type: 'REMOVE_TASK', id };
+};

@@ -2,13 +2,13 @@ import React        from 'react';
 import { connect }  from 'react-redux';
 import moment       from 'moment';
 
-import { toggleTask } from 'actions';
+import { toggleTask, removeTask } from 'actions';
 
 export var TodoTask = React.createClass({
   render() {
     var { id, text, completed, createdAt, completedAt, dispatch, priority } = this.props,
         taskClassName = completed ? 'task task-completed' : 'task',
-        now = moment().unix();
+        now           = moment().unix();
 
     const renderDate = () => {
       let message     = 'Created ',
@@ -29,6 +29,18 @@ export var TodoTask = React.createClass({
       }
     };
 
+    const renderRemove = () => {
+      if(!completed) {
+        return;
+      }
+
+      return (
+        <div className="remove">
+          <button onClick={() => { dispatch(removeTask(id)); }}>&times;</button>
+        </div>
+      );
+    }
+
     return (
       <div className={taskClassName} onClick={() => { dispatch(toggleTask(id)); }}>
         <div>
@@ -36,8 +48,9 @@ export var TodoTask = React.createClass({
         </div>
         <div>
           <p className={`priority-${priority}`}>{text}</p>
-          <p className="task__subtext">{renderDate()}</p>
+          <span className="task__subtext">{renderDate()}</span>
         </div>
+        {renderRemove()}
       </div>
     )
   }
