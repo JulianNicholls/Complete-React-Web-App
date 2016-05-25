@@ -35,9 +35,9 @@ export var TodoTask = React.createClass({
       }
 
       return (
-        <div className="remove">
+        <span className="remove">
           <button onClick={() => { dispatch(removeTask(id)); }}>&times;</button>
-        </div>
+        </span>
       );
     }
 
@@ -46,7 +46,7 @@ export var TodoTask = React.createClass({
         <div>
           <input type="checkbox" checked={completed} />
         </div>
-        <div>
+        <div className="text">
           <p className={`priority-${priority}`}>{text}</p>
           <span className="task__subtext">{renderDate()}</span>
         </div>

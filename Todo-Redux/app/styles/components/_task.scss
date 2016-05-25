@@ -5,6 +5,10 @@
   padding: 1rem;
   transition: background 0.3s ease;
 
+  .text {
+    width: 95%;   // Make room for remove div
+  }
+
   p, input {
     margin: 0;
   }
@@ -29,8 +33,9 @@
 .priority-5 { color: $pri-5-color; }
 
 .remove {
+  font-size: 1.5rem;
   color: Red;
-//  display: none;
+  display: none;
 }
 
 .task__subtext {
