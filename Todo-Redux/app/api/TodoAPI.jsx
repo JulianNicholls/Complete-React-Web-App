@@ -11,11 +11,10 @@ module.exports = {
     return tasks;
   },
   getTasks() {
-    let strTasks  = localStorage.getItem('tasks'),
-        tasks;
+    let strTasks  = localStorage.getItem('tasks')
 
     try {
-      tasks = JSON.parse(strTasks);
+      let tasks = JSON.parse(strTasks);
 
       if($.isArray(tasks)) {
         return tasks
@@ -26,15 +25,7 @@ module.exports = {
     return [];
   },
   filterTasks(tasks, showCompleted, searchText) {
-    var filteredTasks = tasks;
-
-    // Filter completed
-
-    if(!showCompleted) {
-      filteredTasks = filteredTasks.filter((task) => {
-        return !task.completed;
-      });
-    }
+    var filteredTasks = showCompleted ? tasks : tasks.filter((task) => !task.completed);
 
     // Filter by searchText
 
@@ -46,7 +37,7 @@ module.exports = {
       });
     }
 
-    // Sort non-completed first
+    // Sort non-completed first, by priority
 
     filteredTasks.sort((a, b) => {
       let acom = a.completed, bcom = b.completed;
@@ -58,7 +49,7 @@ module.exports = {
         return 1;
       }
 
-      return 0;
+      return a.priority - b.priority;
     });
 
     return filteredTasks;

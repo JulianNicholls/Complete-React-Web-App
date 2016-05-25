@@ -13,12 +13,13 @@ describe('TodoForm', () => {
 
   it('should dispatch addTask if a valid task is entered', () => {
     let text    = 'Check mail',
-        action  = { type: 'ADD_TASK', text },
+        action  = { type: 'ADD_TASK', text, priority: '3' },
         spy     = expect.createSpy(),
         cform   = TestUtils.renderIntoDocument(<TodoForm dispatch={spy} />),
         $el     = $(ReactDOM.findDOMNode(cform));
 
     cform.refs.taskText.value = text;
+    cform.refs.priority.value = '3';
     TestUtils.Simulate.submit($el.find('form')[0]);
 
     expect(spy).toHaveBeenCalledWith(action);
@@ -30,6 +31,7 @@ describe('TodoForm', () => {
         $el   = $(ReactDOM.findDOMNode(cform));
 
     cform.refs.taskText.value = '';
+    cform.refs.priority.value = 1;
     TestUtils.Simulate.submit($el.find('form')[0]);
 
     expect(spy).toNotHaveBeenCalled();

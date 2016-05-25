@@ -1,6 +1,4 @@
 import React  from 'react';
-import UUID   from 'node-uuid';
-import moment from 'moment';
 
 import TodoSearch from 'TodoSearch'
 import TodoList   from 'TodoList';
@@ -13,7 +11,7 @@ var TodoApp = React.createClass({
         <h1 className="page-title">Reactive Agenda</h1>
 
         <div className="row">
-          <div className="column small-centered small-11 medium-8 large-7">
+          <div className="column small-centered small-11 medium-10 large-8">
             <div className="container">
               <TodoSearch />
               <TodoList />

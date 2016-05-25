@@ -1,6 +1,7 @@
-import React     from 'react';
-import {connect} from 'react-redux';
-import {addTask} from 'actions';
+import React       from 'react';
+import { connect } from 'react-redux';
+
+import { addTask } from 'actions';
 
 export var TodoForm = React.createClass({
   render() {
@@ -8,10 +9,10 @@ export var TodoForm = React.createClass({
       <div className="container__footer">
         <form ref="form" onSubmit={this.onSubmit} className="todo-form">
           <input type="text" ref="taskText" placeholder="What's on the agenda?" />
-          <select ref="priority">
+          <select ref="priority" defaultValue={3}>
             <option value="1">Highest</option>
             <option value="2">Higher</option>
-            <option value="3" selected="true">Normal Priority</option>
+            <option value="3">Normal Priority</option>
             <option value="4">Lower</option>
             <option value="5">Lowest</option>
           </select>
