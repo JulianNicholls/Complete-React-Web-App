@@ -33,7 +33,7 @@ export function tasksReducer(state = [], action) {
           completed:    false,
           createdAt:    moment().unix(),
           completedAt:  undefined,
-          priority:     Math.floor(Math.random() * 5) + 1
+          priority:     action.priority
         }
       ];
 

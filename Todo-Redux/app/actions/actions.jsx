@@ -10,8 +10,8 @@ export function loadTasks(tasks) {
   return { type: 'LOAD_TASKS', tasks };
 };
 
-export function addTask(text) {
-  return { type: 'ADD_TASK', text };
+export function addTask(text, priority) {
+  return { type: 'ADD_TASK', text, priority };
 };
 
 export function toggleTask(id) {
