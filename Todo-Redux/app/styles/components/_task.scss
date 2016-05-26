@@ -2,7 +2,7 @@
   display: flex;
   cursor: pointer;
   align-items: center;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   transition: background 0.3s ease;
 
   .text {
@@ -18,7 +18,7 @@
   }
 
   &:hover {
-    background: #f0f0f0;
+    background: darken($light-grey, 2%);
 
     .remove {
       display: block;

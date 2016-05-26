@@ -16,5 +16,5 @@ app.use(function (req, resp, next) {
 app.use(express.static('public'));
 
 app.listen(PORT, function () {
-    console.log("Express loaded at port " + PORT);
+  console.log("Express loaded at port " + PORT);
 })
