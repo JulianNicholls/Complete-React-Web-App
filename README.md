@@ -14,7 +14,7 @@ The Work in Progress Todo app is available at
 
 ## Status
 
-So far, Working through section 10 - Redux, started re-factoring Todo App.
+So far, Working through section 11 - Firebase.
 
 ## Git Commits
 
@@ -73,10 +73,13 @@ These include
 * AddTodo -> TodoForm
 * TodoAPI.getTodos / setTodos -> TodoAPI.getTasks / setTasks
 
-#### moment-examples.js
+#### priority
 
-Because my playground directory is in the root of the repository, it won't work where it is.
-Copy `moment-examples.js` into the React-Todo directory and run it from there.
+My tasks include a priority, which defaults to normal, and is shown as a range of
+colours. Green is used for the lowest priority through to Red for highest. The tasks
+are sorted into priority order for display, from highest down to lowest.
+
+This means that there is an extra field in my TodoForm.
 
 #### Timestamps
 
@@ -95,6 +98,14 @@ This is something that I have written myself in the past in
 [PHP](https://github.com/JulianNicholls/RSS-Viewer/blob/master/humantime.php)
 and
 [Ruby](https://github.com/JulianNicholls/ruby-rss-reader/blob/master/humantime.rb)
+
+#### moment-examples.js and Firebase index.js
+
+Because my playground directory is in the root of the repository, these asides won't work
+from where they are.
+
+Copy `moment-examples.js` into the React-Todo directory and run it from there.
+Copy `index.js` into the Todo-Redux directory and run it from there.
 
 ### Git client
 
