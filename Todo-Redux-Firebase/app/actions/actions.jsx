@@ -38,8 +38,22 @@ export function startAddTask(text, priority) {
   };
 };
 
-export function toggleTask(id) {
-  return { type: 'TOGGLE_TASK', id };
+export function updateTask(id, updates) {
+  return { type: 'UPDATE_TASK', id, updates };
+};
+
+export function startToggleTask(id, completed) {
+  return (dispatch, getState) => {
+    const taskRef = firebaseRef.child(`tasks/${id}`),
+          updates = {
+      completed,
+      completedAt: completed ? moment().unix() : null
+    };
+
+    return taskRef.update(updates).then(() => {
+      dispatch(updateTask(id, updates));
+    });
+  };
 };
 
 export function removeTask(id) {

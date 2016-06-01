@@ -28,13 +28,10 @@ export function tasksReducer(state = [], action) {
     case 'ADD_TASK':
       return [...state, action.task];
 
-    case 'TOGGLE_TASK':
+    case 'UPDATE_TASK':
       return state.map((task) => {
         if(task.id === action.id) {
-          return { ...task,
-            completed:   !task.completed,
-            completedAt: task.completed ? undefined : moment().unix()
-          }
+          return { ...task, ...action.updates };
         }
 
         return task;
