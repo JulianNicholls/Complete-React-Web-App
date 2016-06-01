@@ -7,8 +7,6 @@ import { loadTasks } from 'actions';
 import TodoApp from 'TodoApp';
 import TodoAPI from 'TodoAPI';
 
-import '../index.js';
-
 var store = require('configureStore').configure();
 
 store.subscribe(() => {

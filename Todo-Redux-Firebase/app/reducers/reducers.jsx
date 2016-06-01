@@ -1,5 +1,3 @@
-import UUID   from 'node-uuid';
-import moment from 'moment';
 
 export function searchTextReducer(state = '', action) {
   switch(action.type) {
@@ -27,15 +25,7 @@ export function tasksReducer(state = [], action) {
       return [...state, ...action.tasks];
 
     case 'ADD_TASK':
-      return [...state, {
-          id:           UUID(),
-          text:         action.text,
-          completed:    false,
-          createdAt:    moment().unix(),
-          completedAt:  undefined,
-          priority:     action.priority
-        }
-      ];
+      return [...state, action.task];
 
     case 'TOGGLE_TASK':
       return state.map((task) => {

@@ -1,7 +1,7 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
-import { addTask } from 'actions';
+import { startAddTask } from 'actions';
 
 export var TodoForm = React.createClass({
   render() {
@@ -31,7 +31,7 @@ export var TodoForm = React.createClass({
     if(taskText.length > 0) {
       this.refs.form.reset();
 
-      dispatch(addTask(taskText, priority));
+      dispatch(startAddTask(taskText, priority));
     }
     else {
       this.refs.taskText.focus();

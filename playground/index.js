@@ -5,7 +5,7 @@ const firebaseConfig = {
     authDomain:    "reactive-agenda.firebaseapp.com",
     databaseURL:   "https://reactive-agenda.firebaseio.com",
     storageBucket: "reactive-agenda.appspot.com",
-  };
+};
 
 firebase.initializeApp(firebaseConfig);
 
