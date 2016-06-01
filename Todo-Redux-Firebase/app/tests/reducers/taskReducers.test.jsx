@@ -6,16 +6,32 @@ import { tasksReducer } from 'reducers';
 describe('Reducers', () => {
   describe('tasksReducer', () => {
     it('should add a task to the array', () => {
-      let action = { type: 'ADD_TASK', text: 'Walk the dog' },
-          resp   = tasksReducer(df([]), df(action));
+      let action = {
+        type: 'ADD_TASK', task: {
+          id:          99,
+          text:        'Walk the dog',
+          createdAt:   115,
+          completed:   false,
+          completedAt: undefined
+        }
+      };
+      let resp   = tasksReducer(df([]), df(action));
 
       expect(resp.length).toBe(1);
-      expect(resp[0].text).toEqual(action.text);
+      expect(resp[0]).toEqual(action.task);
     });
 
     it('should change the completed state on a task', () => {
-      let addAction     = { type: 'ADD_TASK', text: 'Walk the dog' },
-          tasks         = tasksReducer(df([]), df(addAction)),
+      let addAction = {
+        type: 'ADD_TASK', task: {
+          id:          99,
+          text:        'Walk the dog',
+          createdAt:   115,
+          completed:   false,
+          completedAt: undefined
+        }
+      };
+      let tasks         = tasksReducer(df([]), df(addAction)),
           toggleAction  = { type: 'TOGGLE_TASK', id: tasks[0].id },
           state         = tasksReducer(df(tasks), df(toggleAction));
 
@@ -47,8 +63,16 @@ describe('Reducers', () => {
     })
 
     it('remove a task', () => {
-      let addAction     = { type: 'ADD_TASK', text: 'Walk the dog' },
-          tasks         = tasksReducer(df([]), df(addAction));
+      let addAction = {
+        type: 'ADD_TASK', task: {
+          id:          99,
+          text:        'Walk the dog',
+          createdAt:   115,
+          completed:   false,
+          completedAt: undefined
+        }
+      };
+      let tasks         = tasksReducer(df([]), df(addAction));
 
       expect(tasks.length).toBe(1);
 

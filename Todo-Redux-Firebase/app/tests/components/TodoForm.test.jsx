@@ -4,7 +4,8 @@ import expect    from 'expect';
 import $         from 'jQuery';
 import TestUtils from 'react-addons-test-utils';
 
-import { TodoForm }  from 'TodoForm';
+import { TodoForm }       from 'TodoForm';
+import { startAddTask }   from 'actions';
 
 describe('TodoForm', () => {
   it('should exist', () => {
@@ -13,7 +14,7 @@ describe('TodoForm', () => {
 
   it('should dispatch addTask if a valid task is entered', () => {
     let text    = 'Check mail',
-        action  = { type: 'ADD_TASK', text, priority: '3' },
+        action  = startAddTask(text, 3 ),
         spy     = expect.createSpy(),
         cform   = TestUtils.renderIntoDocument(<TodoForm dispatch={spy} />),
         $el     = $(ReactDOM.findDOMNode(cform));

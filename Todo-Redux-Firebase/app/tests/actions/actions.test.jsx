@@ -1,6 +1,10 @@
-import expect from 'expect';
+import expect              from 'expect';
+import configureMockStore  from 'redux-mock-store';
+import thunk               from 'redux-thunk';
 
-import { setSearchText, toggleShowCompleted, loadTasks, addTask, toggleTask, removeTask } from 'actions';
+import { setSearchText, toggleShowCompleted, loadTasks, startAddTask, addTask, toggleTask, removeTask } from 'actions';
+
+const createMockStore = configureMockStore([thunk]);
 
 describe('Actions', () => {
   it('should generate search text action', () => {
@@ -34,10 +38,32 @@ describe('Actions', () => {
   });
 
   it('should generate add task action', () => {
-    let action = { type: 'ADD_TASK', text: 'Walk the dog', priority: 1 },
-        resp   = addTask('Walk the dog', 1);
+    let action = {
+      type: 'ADD_TASK', task: {
+        id:          99,
+        text:        'Walk the dog',
+        createdAt:   115,
+        completed:   false,
+        completedAt: undefined
+      }
+    };
+    let resp   = addTask(action.task);
 
     expect(resp).toEqual(action);
+  });
+
+  it('should create task and dispatch ADD_TASK', (done) => {
+    const store    = createMockStore({}),
+          taskText = 'Walk the dog';
+
+    store.dispatch(startAddTask(taskText, 3)).then(() => {
+      const actions = store.getActions();
+
+      expect(actions[0]).toInclude({ type: 'ADD_TASK' });
+      expect(actions[0].task).toInclude({ text: taskText });
+
+      done();
+    }).catch(done);
   });
 
   it('should generate toggle task action', () => {

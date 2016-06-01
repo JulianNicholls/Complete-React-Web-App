@@ -1,3 +1,4 @@
+import moment from 'moment';
 
 export function searchTextReducer(state = '', action) {
   switch(action.type) {
