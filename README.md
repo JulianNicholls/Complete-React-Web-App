@@ -38,7 +38,8 @@ I have successively started new directories during the course, in this order (I 
 * React-Todo          - Todo App, using localStorage
 * playground          - short asides from lectures
 * First-Redux
-* Todo-Redux          - WIP Todo App, using Redux
+* Todo-Redux          - Todo App, using Redux
+* Todo-Redux-Firebase - WIP Todo App, using Redux and Firebase
 
 ### Important Notes for Todo App
 
