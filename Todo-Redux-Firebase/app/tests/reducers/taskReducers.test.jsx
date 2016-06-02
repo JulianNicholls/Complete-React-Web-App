@@ -21,29 +21,21 @@ describe('Reducers', () => {
       expect(resp[0]).toEqual(action.task);
     });
 
-    it('should change the completed state on a task', () => {
-      let addAction = {
-        type: 'ADD_TASK', task: {
-          id:          99,
-          text:        'Walk the dog',
-          createdAt:   115,
-          completed:   false,
-          completedAt: undefined
-        }
-      };
-      let tasks         = tasksReducer(df([]), df(addAction)),
-          toggleAction  = { type: 'TOGGLE_TASK', id: tasks[0].id },
+    it('should update a task', () => {
+      let tasks  = [{
+        id:          99,
+        text:        'Walk the dog',
+        createdAt:   115,
+        completed:   true,
+        completedAt: 1234
+      }];
+      let updates       = { completed:   false, completedAt: null },
+          toggleAction  = { type: 'UPDATE_TASK', id: tasks[0].id, updates },
           state         = tasksReducer(df(tasks), df(toggleAction));
 
-      // Explicitly toggle it both ways for good measure
-
-      expect(state[0].completed).toBe(true);
-      expect(state[0].completedAt).toExist();
-
-      state = tasksReducer(df(state), df(toggleAction));
-
-      expect(state[0].completed).toBe(false);
-      expect(state[0].completedAt).toNotExist();
+      expect(state[0].completed).toEqual(updates.completed);
+      expect(state[0].completedAt).toEqual(updates.completedAt);
+      expect(state[0].text).toEqual(tasks[0].text);
     });
 
     it('should load tasks from an array', () => {
@@ -62,19 +54,14 @@ describe('Reducers', () => {
       expect(newTasks).toEqual(tasks);
     })
 
-    it('remove a task', () => {
-      let addAction = {
-        type: 'ADD_TASK', task: {
-          id:          99,
-          text:        'Walk the dog',
-          createdAt:   115,
-          completed:   false,
-          completedAt: undefined
-        }
-      };
-      let tasks         = tasksReducer(df([]), df(addAction));
-
-      expect(tasks.length).toBe(1);
+    it('should remove a task', () => {
+      let tasks  = [{
+        id:          99,
+        text:        'Walk the dog',
+        createdAt:   115,
+        completed:   false,
+        completedAt: undefined
+      }];
 
       let removeAction  = { type: 'REMOVE_TASK', id: tasks[0].id },
           state         = tasksReducer(df(tasks), df(removeAction));

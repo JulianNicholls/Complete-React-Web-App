@@ -12,7 +12,7 @@ describe('TodoForm', () => {
     expect(TodoForm).toExist();
   });
 
-  it('should dispatch addTask if a valid task is entered', () => {
+  it('should dispatch startAddTask if a valid task is entered', () => {
     let text    = 'Check mail',
         action  = startAddTask(text, 3 ),
         spy     = expect.createSpy(),

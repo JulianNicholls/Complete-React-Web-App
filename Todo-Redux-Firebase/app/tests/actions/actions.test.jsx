@@ -2,7 +2,9 @@ import expect              from 'expect';
 import configureMockStore  from 'redux-mock-store';
 import thunk               from 'redux-thunk';
 
-import { setSearchText, toggleShowCompleted, loadTasks, startAddTask, addTask, toggleTask, removeTask } from 'actions';
+import * as actions        from 'actions';
+
+import firebase, { firebaseRef } from 'app/firebase';
 
 const createMockStore = configureMockStore([thunk]);
 
@@ -10,14 +12,14 @@ describe('Actions', () => {
   it('should generate search text action', () => {
     let searchText = 'dog',
         action     = { type: 'SET_SEARCH_TEXT', searchText },
-        resp       = setSearchText(searchText);
+        resp       = actions.setSearchText(searchText);
 
     expect(resp).toEqual(action);
   });
 
   it('should generate toggle showCompleted action', () => {
     let action = { type: 'TOGGLE_SHOW_COMPLETED' },
-        resp   = toggleShowCompleted();
+        resp   = actions.toggleShowCompleted();
 
     expect(resp).toEqual(action);
   });
@@ -32,7 +34,7 @@ describe('Actions', () => {
     }];
 
     let action = { type: 'LOAD_TASKS', tasks },
-        resp   = loadTasks(tasks);
+        resp   = actions.loadTasks(tasks);
 
     expect(resp).toEqual(action);
   });
@@ -47,7 +49,7 @@ describe('Actions', () => {
         completedAt: undefined
       }
     };
-    let resp   = addTask(action.task);
+    let resp   = actions.addTask(action.task);
 
     expect(resp).toEqual(action);
   });
@@ -56,7 +58,7 @@ describe('Actions', () => {
     const store    = createMockStore({}),
           taskText = 'Walk the dog';
 
-    store.dispatch(startAddTask(taskText, 3)).then(() => {
+    store.dispatch(actions.startAddTask(taskText, 3)).then(() => {
       const actions = store.getActions();
 
       expect(actions[0]).toInclude({ type: 'ADD_TASK' });
@@ -66,10 +68,10 @@ describe('Actions', () => {
     }).catch(done);
   });
 
-  it('should generate toggle task action', () => {
+  it('should generate update task action', () => {
     let id     = 753,
-        action = { type: 'TOGGLE_TASK', id },
-        resp   = toggleTask(id);
+        action = { type: 'UPDATE_TASK', id, updates: { completed: true } },
+        resp   = actions.updateTask(id, action.updates);
 
     expect(resp).toEqual(action);
   });
@@ -77,8 +79,42 @@ describe('Actions', () => {
   it('should generate remove task action', () => {
     let id     = 753,
         action = { type: 'REMOVE_TASK', id },
-        resp   = removeTask(id);
+        resp   = actions.removeTask(id);
 
     expect(resp).toEqual(action);
   });
+
+  describe('Tests with Firebase tasks', () => {
+    var testTasksRef;
+
+    beforeEach((done) => {
+      testTasksRef = firebaseRef.child('tasks').push();
+
+      testTasksRef.set({
+        text:      'Walk the dog',
+        completed: false,
+        priority:  3,
+        createdAt: 12345
+      }).then(() => done() );
+    });
+
+    afterEach((done) => {
+      testTasksRef.remove().then(() => done());
+    });
+
+    it('should toggle task and generate UPDATE_TASK action', (done) => {
+      const store = createMockStore({}),
+            action = actions.startToggleTask(testTasksRef.key, true);
+
+      store.dispatch(action).then(() => {
+        const mockActions = store.getActions();
+
+        expect(mockActions[0]).toInclude({ type: 'UPDATE_TASK', id: testTasksRef.key });
+        expect(mockActions[0].updates).toInclude({ completed: true });
+        expect(mockActions[0].updates.completedAt).toExist();
+
+        done();
+      }, done);
+    });
+  })
 });
