@@ -59,3 +59,17 @@ export function startToggleTask(id, completed) {
 export function removeTask(id) {
   return { type: 'REMOVE_TASK', id };
 };
+
+export function startRemoveTask(id) {
+  return (dispatch, getState) => {
+    console.log(`Task: tasks/${id}`);
+
+    var taskRef = firebaseRef.child(`tasks/${id}`);
+
+    return taskRef.remove().then(() => {
+      dispatch(removeTask(id));
+    }, (err) => {
+      console.error('Remove failed:', err);
+    });
+  };
+}

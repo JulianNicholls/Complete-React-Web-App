@@ -2,7 +2,7 @@ import React        from 'react';
 import { connect }  from 'react-redux';
 import moment       from 'moment';
 
-import { startToggleTask, removeTask } from 'actions';
+import { startToggleTask, startRemoveTask } from 'actions';
 
 export var TodoTask = React.createClass({
   render() {
@@ -36,7 +36,7 @@ export var TodoTask = React.createClass({
 
       return (
         <span className="remove">
-          <button onClick={() => { dispatch(removeTask(id)); }}>&times;</button>
+          <button onClick={() => { dispatch(startRemoveTask(id)); }}>&times;</button>
         </span>
       );
     }
