@@ -29,7 +29,7 @@ describe('Reducers', () => {
         completed:   true,
         completedAt: 1234
       }];
-      let updates       = { completed:   false, completedAt: null },
+      let updates       = { completed: false, completedAt: null },
           toggleAction  = { type: 'UPDATE_TASK', id: tasks[0].id, updates },
           state         = tasksReducer(df(tasks), df(toggleAction));
 

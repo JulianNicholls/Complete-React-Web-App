@@ -85,36 +85,49 @@ describe('Actions', () => {
   });
 
   describe('Tests with Firebase tasks', () => {
-    var testTasksRef;
+    var testTaskRef;
 
     beforeEach((done) => {
-      testTasksRef = firebaseRef.child('tasks').push();
+      testTaskRef = firebaseRef.child('tasks').push();
 
-      testTasksRef.set({
+      testTaskRef.set({
         text:      'Walk the dog',
         completed: false,
         priority:  3,
         createdAt: 12345
-      }).then(() => done() );
+      }).then(() => done());
     });
 
     afterEach((done) => {
-      testTasksRef.remove().then(() => done());
+      testTaskRef.remove().then(() => done());
     });
 
     it('should toggle task and generate UPDATE_TASK action', (done) => {
-      const store = createMockStore({}),
-            action = actions.startToggleTask(testTasksRef.key, true);
+      const store  = createMockStore({}),
+            action = actions.startToggleTask(testTaskRef.key, true);
 
       store.dispatch(action).then(() => {
         const mockActions = store.getActions();
 
-        expect(mockActions[0]).toInclude({ type: 'UPDATE_TASK', id: testTasksRef.key });
+        expect(mockActions[0]).toInclude({ type: 'UPDATE_TASK', id: testTaskRef.key });
         expect(mockActions[0].updates).toInclude({ completed: true });
         expect(mockActions[0].updates.completedAt).toExist();
 
         done();
       }, done);
     });
-  })
+
+    it('should remove task and generate REMOVE_TASK action', (done) => {
+      const store  = createMockStore({}),
+            action = actions.startRemoveTask(testTaskRef.key);
+
+      store.dispatch(action).then(() => {
+        const mockActions = store.getActions();
+
+        expect(mockActions[0]).toEqual({ type: 'REMOVE_TASK', id: testTaskRef.key });
+
+        done();
+      }, done);
+    });
+  });
 });
