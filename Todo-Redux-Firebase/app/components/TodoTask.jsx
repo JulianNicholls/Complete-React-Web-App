@@ -36,7 +36,13 @@ export var TodoTask = React.createClass({
 
       return (
         <span className="remove">
-          <button onClick={() => { dispatch(startRemoveTask(id)); }}>&times;</button>
+          <button onClick={(evt) => {
+              evt.stopPropagation();   // If it bubbles, the task will be re-made
+              dispatch(startRemoveTask(id));
+            }
+          }>
+            &times;
+          </button>
         </span>
       );
     }

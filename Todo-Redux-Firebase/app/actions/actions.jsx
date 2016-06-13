@@ -62,9 +62,7 @@ export function removeTask(id) {
 
 export function startRemoveTask(id) {
   return (dispatch, getState) => {
-    console.log(`Task: tasks/${id}`);
-
-    var taskRef = firebaseRef.child(`tasks/${id}`);
+    const taskRef = firebaseRef.child(`tasks/${id}`);
 
     return taskRef.remove().then(() => {
       dispatch(removeTask(id));
