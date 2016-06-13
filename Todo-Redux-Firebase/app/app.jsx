@@ -2,22 +2,15 @@ import React         from 'react';
 import ReactDOM      from 'react-dom';
 import { Provider }  from 'react-redux';
 
-import { loadTasks } from 'actions';
+import { startLoadTasks } from 'actions';
 
 import TodoApp from 'TodoApp';
 import TodoAPI from 'TodoAPI';
 
 var store = require('configureStore').configure();
 
-store.subscribe(() => {
-  var state = store.getState();
-
-  TodoAPI.setTasks(state.tasks);
-});
-
-var initialTasks = TodoAPI.getTasks();
-
-store.dispatch(loadTasks(initialTasks));
+// Load initial tasks from Firebase
+store.dispatch(startLoadTasks());
 
 // Load Foundation and our own CSS
 $(document).foundation();

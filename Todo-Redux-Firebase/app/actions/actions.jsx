@@ -13,6 +13,26 @@ export function loadTasks(tasks) {
   return { type: 'LOAD_TASKS', tasks };
 };
 
+export function startLoadTasks() {
+  return (dispatch, getState) => {
+    const tasksRef = firebaseRef.child('tasks');
+
+    return tasksRef.once('value').then((snapshot) => {
+      var tasks       = snapshot.val() || {},
+          parsedTasks = [];
+
+      Object.keys(tasks).forEach((taskId) => {
+        parsedTasks.push({
+          id: taskId,
+          ...tasks[taskId]
+        });
+      });
+
+      dispatch(loadTasks(parsedTasks));
+    });
+  };
+};
+
 export function addTask(task) {
   return { type: 'ADD_TASK', task };
 };
