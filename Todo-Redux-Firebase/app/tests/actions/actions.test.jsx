@@ -56,7 +56,7 @@ describe('Actions', () => {
 
   it('should create task and dispatch ADD_TASK', (done) => {
     const store    = createMockStore({}),
-          taskText = 'Walk the dog';
+          taskText = 'ADD_TASK - Walk the dog';
 
     store.dispatch(actions.startAddTask(taskText, 3)).then(() => {
       const actions = store.getActions();
@@ -94,7 +94,7 @@ describe('Actions', () => {
         text:      'Walk the dog',
         completed: false,
         priority:  3,
-        createdAt: 12345
+        createdAt: 12345678
       }).then(() => done());
     });
 
