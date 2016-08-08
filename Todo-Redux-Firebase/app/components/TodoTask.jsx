@@ -25,7 +25,7 @@ export var TodoTask = React.createClass({
         return message + momentStamp.fromNow();
       }
       else {
-        return message + momentStamp.format('h:mma Do MMM YY')
+        return message + momentStamp.format('h:mma Do MMM YYYY')
       }
     };
 

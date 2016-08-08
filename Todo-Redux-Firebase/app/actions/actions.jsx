@@ -66,9 +66,9 @@ export function startToggleTask(id, completed) {
   return (dispatch, getState) => {
     const taskRef = firebaseRef.child(`tasks/${id}`),
           updates = {
-      completed,
-      completedAt: completed ? moment().unix() : null
-    };
+            completed,
+            completedAt: completed ? moment().unix() : null
+          };
 
     return taskRef.update(updates).then(() => {
       dispatch(updateTask(id, updates));
