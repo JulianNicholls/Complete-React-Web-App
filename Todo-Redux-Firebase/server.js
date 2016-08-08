@@ -1,10 +1,10 @@
-var express = require('express');
+const express = require('express');
 
 // Create our app
-var   app   = express();
+const app   = express();
 const PORT  = process.env.PORT || 3100;
 
-app.use(function (req, resp, next) {
+app.use((req, resp, next) => {
   if(req.protocol === 'https') {
     resp.redirect('http://' + req.hostname + req.url)
   }
@@ -15,6 +15,6 @@ app.use(function (req, resp, next) {
 
 app.use(express.static('public'));
 
-app.listen(PORT, function () {
+app.listen(PORT, _ => {
   console.log("Express loaded at port " + PORT);
-})
+});
