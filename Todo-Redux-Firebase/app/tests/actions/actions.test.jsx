@@ -88,21 +88,27 @@ describe('Actions', () => {
     var testTaskRef;
 
     beforeEach((done) => {
-      testTaskRef = firebaseRef.child('tasks').push();
+      let tasksRef = firebaseRef.child('tasks');
 
-      testTaskRef.set({
-        text:      'Walk the dog',
-        completed: false,
-        priority:  3,
-        createdAt: 12345678
-      }).then(() => done());
+      tasksRef.remove().then(() => {
+        testTaskRef = firebaseRef.child('tasks').push();
+
+        testTaskRef.set({
+          text:      'Walk the dog',
+          completed: false,
+          priority:  3,
+          createdAt: 12345678
+        })
+      })
+      .then(() => done())
+      .catch(done);
     });
 
     afterEach((done) => {
       testTaskRef.remove().then(() => done());
     });
 
-    it('should toggle task and generate UPDATE_TASK action', (done) => {
+    it('should toggle task and dispatch UPDATE_TASK action', (done) => {
       const store  = createMockStore({}),
             action = actions.startToggleTask(testTaskRef.key, true);
 
@@ -117,7 +123,7 @@ describe('Actions', () => {
       }, done);
     });
 
-    it('should remove task and generate REMOVE_TASK action', (done) => {
+    it('should remove task and dispatch REMOVE_TASK action', (done) => {
       const store  = createMockStore({}),
             action = actions.startRemoveTask(testTaskRef.key);
 
@@ -125,6 +131,21 @@ describe('Actions', () => {
         const mockActions = store.getActions();
 
         expect(mockActions[0]).toEqual({ type: 'REMOVE_TASK', id: testTaskRef.key });
+
+        done();
+      }, done);
+    });
+
+    it('should load tasks and dispatch LOAD_TASKS action', (done) => {
+      const store  = createMockStore({}),
+            action = actions.startLoadTasks();
+
+      store.dispatch(action).then(() => {
+        const mockActions = store.getActions();
+
+        expect(mockActions[0].type).toEqual('LOAD_TASKS');
+        expect(mockActions[0].tasks.length).toEqual(1);
+        expect(mockActions[0].tasks[0].text).toEqual('Walk the dog');
 
         done();
       }, done);
