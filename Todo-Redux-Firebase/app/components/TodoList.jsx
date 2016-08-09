@@ -1,9 +1,9 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
-import TodoTask  from 'TodoTask';
+import TodoTask    from 'TodoTask';
 
-import TodoAPI   from 'TodoAPI';
+import TodoAPI     from 'TodoAPI';
 
 export var TodoList = React.createClass({
   render() {

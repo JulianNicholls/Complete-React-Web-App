@@ -1,7 +1,7 @@
-import React       from 'react';
-import { connect } from 'react-redux';
+import React             from 'react';
+import { connect }       from 'react-redux';
 
-import { startAddTask } from 'actions';
+import { startAddTask }  from 'actions';
 
 export var TodoForm = React.createClass({
   render() {

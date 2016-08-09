@@ -9,9 +9,7 @@ try {
   };
 
   firebase.initializeApp(firebaseConfig);
-} catch(e) {
-
-}
+} catch(e) { }
 
 export const firebaseRef = firebase.database().ref();
 

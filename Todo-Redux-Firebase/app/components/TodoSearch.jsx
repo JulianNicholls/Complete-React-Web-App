@@ -6,6 +6,7 @@ import { setSearchText, toggleShowCompleted } from 'actions';
 export var TodoSearch = React.createClass({
   render() {
     let { dispatch, showCompleted, searchText } = this.props
+    
     return (
       <div className="container__header">
         <div>
