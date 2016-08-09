@@ -75,6 +75,7 @@ These include
 * Todo -> TodoTask
 * AddTodo -> TodoForm
 * TodoAPI.getTodos / setTodos -> TodoAPI.getTasks / setTasks
+* startAddTodos -> startLoadTasks
 
 #### priority
 

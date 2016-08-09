@@ -1,5 +1,5 @@
-import firebase, { firebaseRef } from 'app/firebase';
-import moment                    from 'moment';
+import { firebaseRef } from 'app/firebase';
+import moment          from 'moment';
 
 export function setSearchText(searchText) {
   return { type: 'SET_SEARCH_TEXT', searchText };
