@@ -48,9 +48,9 @@ describe('TodoList', () => {
     expect(todotasks.length).toBe(tasks.length);
   });
 
-  it('should render a message if there are no (or no uncompleted) tasks', () => {
+  it('should render a message if there are no matching tasks', () => {
     let tasks     = [],
-        todolist  = TestUtils.renderIntoDocument(<TodoList tasks={tasks} />),
+        todolist  = TestUtils.renderIntoDocument(<TodoList tasks={tasks} searchText="" />),
         $el       = $(ReactDOM.findDOMNode(todolist));
 
     expect($el.find(".container__message").length).toBe(1);
