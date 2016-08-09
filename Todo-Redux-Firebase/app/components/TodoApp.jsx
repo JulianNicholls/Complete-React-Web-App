@@ -6,6 +6,9 @@ import TodoForm   from 'TodoForm';
 
 var TodoApp = () =>
   <div>
+    <div className="page-actions">
+      <a href="#">Log out</a>
+    </div>
     <h1 className="page-title">Reactive Agenda</h1>
 
     <div className="row">
