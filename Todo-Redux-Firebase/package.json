@@ -1,8 +1,8 @@
 {
-  "name": "react-clocks",
+  "name": "react-todo",
   "version": "0.7.0",
-  "description": "React Clocks",
-  "main": "index.js",
+  "description": "React Todo",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/JulianNicholls/Complete-React-Web-App.git"
