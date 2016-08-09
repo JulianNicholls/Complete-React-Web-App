@@ -1,5 +1,3 @@
-import $ from 'jQuery';
-
 module.exports = {
   filterTasks(tasks, showCompleted, searchText) {
     var filteredTasks = showCompleted ? tasks : tasks.filter((task) => !task.completed);
