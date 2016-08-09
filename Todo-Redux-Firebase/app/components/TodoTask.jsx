@@ -19,13 +19,13 @@ export var TodoTask = React.createClass({
         timestamp = completedAt;
       }
 
-      let momentStamp = moment.unix(timestamp);
+      let momentStamp = moment.unix(timestamp)
 
       if(now - timestamp < (15 * 86400)) { // Last fortnight
         return message + momentStamp.fromNow();
       }
       else {
-        return message + momentStamp.format('h:mma Do MMM YYYY')
+        return message + momentStamp.format('[at] LT [on] Do MMM YYYY');
       }
     };
 
