@@ -17,14 +17,13 @@ describe('TodoApp', () => {
   });
 
   it('should render TodoList', () => {
-    var store    = configure(),
+    let store    = configure(),
         provider = TestUtils.renderIntoDocument(
           <Provider store={store}>
             <TodoApp />
           </Provider>
         ),
-        todoapp  = TestUtils.scryRenderedComponentsWithType(provider, TodoApp)[0],
-        todolist = TestUtils.scryRenderedComponentsWithType(todoapp, TodoList);
+        todolist = TestUtils.scryRenderedComponentsWithType(provider, TodoList);
 
     expect(todolist.length).toEqual(1);
   });

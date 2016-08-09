@@ -17,6 +17,6 @@ var TodoApp = () =>
         </div>
       </div>
     </div>
-  </div>
+  </div>;
 
 module.exports = TodoApp;
