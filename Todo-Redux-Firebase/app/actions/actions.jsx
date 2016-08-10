@@ -90,24 +90,32 @@ export function startRemoveTask(id) {
       console.error('Remove failed:', err);
     });
   };
-}
+};
+
+export function login(uid) {
+  return { type: 'LOGIN', uid };
+};
 
 export function startLogin() {
   return (dispatch, getState) => {
     return firebase.auth().signInWithPopup(githubProvider).then((result) => {
-      console.log('Auth OK: ', result);
+//      console.log('Auth OK - uid: ', result.user.uid);
     }, (err) => {
       console.log('Auth Failed: ', err);
-    }).catch((err) => {
+    }).catch((err) => {    // I think there is a third possibility, although I'm not sure
       throw err;
     });
   };
 };
 
+export function logout() {
+  return { type: 'LOGOUT' };
+};
+
 export function startLogout() {
   return (dispatch, getState) => {
     return firebase.auth().signOut().then(() => {
-      console.log('Logged out OK');
+//      console.log('Logged out OK');
     })
   };
 };

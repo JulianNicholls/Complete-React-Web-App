@@ -7,10 +7,7 @@ import firebase        from 'app/firebase';
 
 import router          from 'app/router';
 
-import { startLoadTasks } from 'actions';
-
-// import Login   from 'Login';
-// import TodoApp from 'TodoApp';
+import { startLoadTasks, login, logout } from 'actions';
 
 var store = require('configureStore').configure();
 
@@ -20,9 +17,11 @@ store.dispatch(startLoadTasks());
 // Subscribe to login / logout actions
 firebase.auth().onAuthStateChanged((user) => {
   if(user) {    // Logged in
-    hashHistory.push('tasks');
+    store.dispatch(login(user.uid));
+    hashHistory.push('/tasks');
   }
   else {
+    store.dispatch(logout());
     hashHistory.push('/');
   }
 });
