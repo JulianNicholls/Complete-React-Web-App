@@ -1,13 +1,14 @@
 import { combineReducers, createStore, compose, applyMiddleware }  from 'redux'
-import thunk                                      from 'redux-thunk'
+import thunk         from 'redux-thunk'
 
-import { searchTextReducer, showCompletedReducer, tasksReducer } from 'reducers';
+import * as Reducers from 'reducers';
 
 export function configure(initialState = {}) {
   var reducer = combineReducers({
-    searchText:     searchTextReducer,
-    showCompleted:  showCompletedReducer,
-    tasks:          tasksReducer
+    searchText:     Reducers.searchTextReducer,
+    showCompleted:  Reducers.showCompletedReducer,
+    tasks:          Reducers.tasksReducer,
+    auth:           Reducers.authReducer
   });
 
   var store = createStore(reducer, initialState, compose(

@@ -1,13 +1,13 @@
 import expect from 'expect';
 import df     from 'deep-freeze-strict';
 
-import { searchTextReducer, showCompletedReducer } from 'reducers';
+import * as Reducers from 'reducers';
 
 describe('Reducers', () => {
   describe('searchTextReducer', () => {
     it('should set searchText', () => {
       let action = { type: 'SET_SEARCH_TEXT', searchText: 'dog' },
-          resp   = searchTextReducer(df(''), df(action));
+          resp   = Reducers.searchTextReducer(df(''), df(action));
 
       expect(resp).toEqual(action.searchText);
     });
@@ -16,14 +16,31 @@ describe('Reducers', () => {
   describe('showCompletedReducer', () => {
     it('should toggle showCompleted', () => {
       let action = { type: 'TOGGLE_SHOW_COMPLETED' },
-          resp   = showCompletedReducer(df(false), df(action));
+          resp   = Reducers.showCompletedReducer(df(false), df(action));
 
       // Explicitly toggle it both ways for good measure
 
       expect(resp).toEqual(true);
 
-      resp = showCompletedReducer(df(true), df(action))
+      resp = Reducers.showCompletedReducer(df(true), df(action))
       expect(resp).toEqual(false);
     });
   });
+
+  describe('authReducer', () => {
+    it('should add a uid to the auth section on login', () => {
+      let action = { type: 'LOGIN', uid: '12345678' },
+          resp   = Reducers.authReducer(df({}), df(action));
+
+      expect(resp).toEqual({ uid: '12345678' });
+    });
+
+    it('should remove the uid from the auth section on logout', () => {
+      let action  = { type: 'LOGOUT' },
+          initial = { uid: '12345678'},
+          resp    = Reducers.authReducer(df(initial), df(action));
+
+      expect(resp).toEqual({});
+    });
+  })
 });

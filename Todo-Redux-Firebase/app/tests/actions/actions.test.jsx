@@ -84,6 +84,21 @@ describe('Actions', () => {
     expect(resp).toEqual(action);
   });
 
+  it('should generate login action', () => {
+    let uid     = '12345678',
+        action  = { type: 'LOGIN', uid },
+        resp    = actions.login(uid);
+
+    expect(resp).toEqual(action);
+  });
+
+  it('should generate logout action', () => {
+    let action  = { type: 'LOGOUT' },
+        resp    = actions.logout();
+
+    expect(resp).toEqual(action);
+  });
+
   describe('Tests with Firebase tasks', () => {
     var testTaskRef;
 

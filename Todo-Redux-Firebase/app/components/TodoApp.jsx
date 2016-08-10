@@ -1,22 +1,38 @@
-import React      from 'react';
+import React        from 'react';
+import { connect }  from 'react-redux';
 
-import TodoSearch from 'TodoSearch';
-import TodoList   from 'TodoList';
-import TodoForm   from 'TodoForm';
+import TodoSearch   from 'TodoSearch';
+import TodoList     from 'TodoList';
+import TodoForm     from 'TodoForm';
 
-var TodoApp = () =>
-  <div>
-    <h1 className="page-title">Reactive Agenda</h1>
+import { startLogout } from 'actions';
 
-    <div className="row">
-      <div className="column small-centered small-11 medium-10 large-8">
-        <div className="container">
-          <TodoSearch />
-          <TodoList />
-          <TodoForm />
+export var TodoApp = React.createClass({
+  render() {
+    return (
+      <div>
+        <div className="page-actions">
+          <button className="button small secondary" onClick={this.onLogout}>Log out</button>
+        </div>
+        <h1 className="page-title">Reactive Agenda</h1>
+
+        <div className="row">
+          <div className="column small-centered small-11 medium-10 large-8">
+            <div className="container">
+              <TodoSearch />
+              <TodoList />
+              <TodoForm />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>;
+    )
+  },
+  onLogout() {
+    const { dispatch } = this.props;
 
-module.exports = TodoApp;
+    dispatch(startLogout());
+  }
+});
+
+export default connect()(TodoApp);

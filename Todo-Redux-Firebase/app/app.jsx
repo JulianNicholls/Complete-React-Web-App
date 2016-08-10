@@ -1,26 +1,38 @@
-import React         from 'react';
-import ReactDOM      from 'react-dom';
-import { Provider }  from 'react-redux';
+import React           from 'react';
+import ReactDOM        from 'react-dom';
+import { Provider }    from 'react-redux';
+import { hashHistory } from 'react-router';
 
-import { startLoadTasks } from 'actions';
+import firebase        from 'app/firebase';
 
-import TodoApp from 'TodoApp';
-import TodoAPI from 'TodoAPI';
+import router          from 'app/router';
+
+import { startLoadTasks, login, logout } from 'actions';
 
 var store = require('configureStore').configure();
 
 // Load initial tasks from Firebase
 store.dispatch(startLoadTasks());
 
+// Subscribe to login / logout actions
+firebase.auth().onAuthStateChanged((user) => {
+  if(user) {    // Logged in
+    store.dispatch(login(user.uid));
+    hashHistory.push('/tasks');
+  }
+  else {
+    store.dispatch(logout());
+    hashHistory.push('/');
+  }
+});
+
 // Load Foundation and our own CSS
 $(document).foundation();
-
 require('style!css!sass!applicationStyles');
-
 
 ReactDOM.render(
   <Provider store={store}>
-    <TodoApp />
+    {router}
   </Provider>,
   document.getElementById('app')
 );

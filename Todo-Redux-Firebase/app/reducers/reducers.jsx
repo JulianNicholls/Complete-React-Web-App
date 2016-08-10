@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 export function searchTextReducer(state = '', action) {
   switch(action.type) {
     case 'SET_SEARCH_TEXT':
@@ -39,6 +37,19 @@ export function tasksReducer(state = [], action) {
 
       case 'REMOVE_TASK':
         return state.filter((task) => task.id !== action.id)
+
+    default:
+      return state;
+  }
+};
+
+export function authReducer(state = {}, action) {
+  switch(action.type) {
+    case 'LOGIN':
+      return { uid: action.uid };
+
+    case 'LOGOUT':
+      return {};
 
     default:
       return state;
