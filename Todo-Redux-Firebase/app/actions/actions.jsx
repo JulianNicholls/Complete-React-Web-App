@@ -98,6 +98,8 @@ export function startLogin() {
       console.log('Auth OK: ', result);
     }, (err) => {
       console.log('Auth Failed: ', err);
+    }).catch((err) => {
+      throw err;
     });
   };
 };

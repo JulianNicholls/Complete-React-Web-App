@@ -12,7 +12,7 @@ export var TodoApp = React.createClass({
     return (
       <div>
         <div className="page-actions">
-          <button className="button" onClick={this.onLogout}>Log out</button>
+          <button className="button small secondary" onClick={this.onLogout}>Log out</button>
         </div>
         <h1 className="page-title">Reactive Agenda</h1>
 
