@@ -15,7 +15,8 @@ export function loadTasks(tasks) {
 
 export function startLoadTasks() {
   return (dispatch, getState) => {
-    const tasksRef = firebaseRef.child('tasks');
+    const uid      = getState().auth.uid,
+          tasksRef = firebaseRef.child(`users/${uid}/tasks`);
 
     return tasksRef.once('value').then((snapshot) => {
       var tasks       = snapshot.val() || {},
@@ -47,7 +48,8 @@ export function startAddTask(text, priority) {
       priority
     };
 
-    const taskRef = firebaseRef.child('tasks').push(task);
+    const uid     = getState().auth.uid,
+          taskRef = firebaseRef.child(`users/${uid}/tasks`).push(task);
 
     return taskRef.then(() => {
       dispatch(addTask({
@@ -64,8 +66,9 @@ export function updateTask(id, updates) {
 
 export function startToggleTask(id, completed) {
   return (dispatch, getState) => {
-    const taskRef = firebaseRef.child(`tasks/${id}`),
-          updates = {
+    const uid      = getState().auth.uid,
+          taskRef  = firebaseRef.child(`users/${uid}/tasks/${id}`),
+          updates  = {
             completed,
             completedAt: completed ? moment().unix() : null
           };

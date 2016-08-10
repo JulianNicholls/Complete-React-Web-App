@@ -11,13 +11,12 @@ import { startLoadTasks, login, logout } from 'actions';
 
 var store = require('configureStore').configure();
 
-// Load initial tasks from Firebase
-store.dispatch(startLoadTasks());
-
 // Subscribe to login / logout actions
 firebase.auth().onAuthStateChanged((user) => {
   if(user) {    // Logged in
     store.dispatch(login(user.uid));
+    store.dispatch(startLoadTasks());
+
     hashHistory.push('/tasks');
   }
   else {
