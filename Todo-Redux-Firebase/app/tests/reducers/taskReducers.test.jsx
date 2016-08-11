@@ -61,12 +61,42 @@ describe('Reducers', () => {
         createdAt:   115,
         completed:   false,
         completedAt: undefined
+      },
+      {
+        id:          100,
+        text:        'Walk the other dog',
+        createdAt:   1154,
+        completed:   true,
+        completedAt: 11111
       }];
 
       let removeAction  = { type: 'REMOVE_TASK', id: tasks[0].id },
           state         = tasksReducer(df(tasks), df(removeAction));
 
-      expect(state.length).toBe(0);
+      expect(state.length).toBe(1);
+      expect(state[0].id).toBe(100);
     });
+
+    it('should remove all tasks on logout', () => {
+      let tasks  = [{
+        id:          99,
+        text:        'Walk the dog',
+        createdAt:   115,
+        completed:   false,
+        completedAt: undefined
+      },
+      {
+        id:          100,
+        text:        'Walk the other dog',
+        createdAt:   1154,
+        completed:   true,
+        completedAt: 11111
+      }];
+
+      let logoutAction  = { type: 'LOGOUT' },
+          state         = tasksReducer(df(tasks), df(logoutAction));
+
+      expect(state.length).toBe(0);
+    })
   });
 });

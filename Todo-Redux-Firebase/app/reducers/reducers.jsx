@@ -38,6 +38,9 @@ export function tasksReducer(state = [], action) {
       case 'REMOVE_TASK':
         return state.filter((task) => task.id !== action.id)
 
+      case 'LOGOUT':
+        return [];
+        
     default:
       return state;
   }
