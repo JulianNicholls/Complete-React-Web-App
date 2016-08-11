@@ -9,17 +9,18 @@ The completed Weather app is available at
 The completed Clocks app is available at
 [Reactive Clocks](http://reactive-clocks.herokuapp.com).
 
-The Work in Progress Todo app is available at
+The completed Todo app is available at
 [Reactive Agenda](http://reactive-agenda.herokuapp.com).
 
 ## Status
 
-So far, Working through section 11 - Firebase.
+I have completed the course.
 
 ## Git Commits
 
-I have committed about three times as much as Andrew advises, more or less at
-the end of each lecture that adds code anywhere. It is a good habit to get into.
+I have committed about three times as much as Andrew advises, more or less
+at the end of each lecture that adds code anywhere. It is a good habit to
+get into.
 
 ## Directories
 
@@ -49,9 +50,9 @@ I have made a few modifications compared with Andrew's version.
 #### import vs require
 
 I have used `import` much earlier than Andrew. Almost all of the `require`s are
-already `import`s by the time of lecture 120 where he changes some `require`s to
-`import`s in order to differentiate between the default exports and the explicitly
-exported unconnected components.
+already `import`s by the time of lecture 120 where he changes some `require`s
+to `import`s in order to differentiate between the default exports and the
+explicitly exported unconnected components.
 
 ```
 Simple example:
@@ -63,11 +64,27 @@ becomes
 import React from 'react';
 ```
 
+#### import { ... } vs import * as
+
+I tend to import only what is needed from files where more than one item
+is exported, as long as there are only a few, e.g.
+
+```
+import { startLoadTasks, login, logout } from 'actions';
+
+rather than
+
+import * as actions from 'actions';
+```
+
+This also has the advantage that the names don't need to be prefixed with
+`actions.` when used later on in the file.
+
 #### todo vs task
 
 My code for the Todo App uses the word 'task' in almost all places where Andrew
-is using 'todo'. I have also made some of my other components and classes
-different from his.
+is using 'todo'. I have also made some of my other component, class, and action
+names different from his.
 
 These include
 
@@ -83,13 +100,13 @@ My tasks include a priority, which defaults to normal, and is shown as a range
 of colours. Green is used for the lowest priority through to Red for highest.
 The tasks are sorted into priority order for display, from highest down to lowest.
 
-This means that there is an extra field in my TodoForm.
+This means that there is an extra selection field in my TodoForm.
 
 #### Timestamps
 
 The timestamp for creation or completion is displayed as '...ago' if it is less
 than a fortnight in the past.
-See [fromNow() documentation](http://momentjs.com/docs/#/displaying/fromnow/).
+See [Moment fromNow() documentation](http://momentjs.com/docs/#/displaying/fromnow/).
 
 So, for example it is now 18:22 on 18 May 2016, so these timestamps would be
 displayed as
