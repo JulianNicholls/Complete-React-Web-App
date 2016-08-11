@@ -54,20 +54,6 @@ describe('Actions', () => {
     expect(resp).toEqual(action);
   });
 
-  it('should create task and dispatch ADD_TASK', (done) => {
-    const store    = createMockStore({}),
-          taskText = 'ADD_TASK - Walk the dog';
-
-    store.dispatch(actions.startAddTask(taskText, 3)).then(() => {
-      const actions = store.getActions();
-
-      expect(actions[0]).toInclude({ type: 'ADD_TASK' });
-      expect(actions[0].task).toInclude({ text: taskText });
-
-      done();
-    }).catch(done);
-  });
-
   it('should generate update task action', () => {
     let id     = 753,
         action = { type: 'UPDATE_TASK', id, updates: { completed: true } },
@@ -101,30 +87,51 @@ describe('Actions', () => {
 
   describe('Tests with Firebase tasks', () => {
     var testTaskRef;
+    var uid;
+    var tasksRef;
 
     beforeEach((done) => {
-      let tasksRef = firebaseRef.child('tasks');
+      const cred = firebase.auth.GithubAuthProvider.credential(process.env.GITHUB_ACCESS_TOKEN);
 
-      tasksRef.remove().then(() => {
-        testTaskRef = firebaseRef.child('tasks').push();
+      firebase.auth().signInWithCredential(cred).then((user) => {
+        uid       = user.uid;
+        tasksRef  = firebaseRef.child(`users/${uid}/tasks`);
 
-        testTaskRef.set({
+        return tasksRef.remove();
+      }).then(() => {
+        testTaskRef = tasksRef.push();
+
+        return testTaskRef.set({
           text:      'Walk the dog',
           completed: false,
           priority:  3,
           createdAt: 12345678
-        })
+        });
       })
       .then(() => done())
       .catch(done);
     });
 
     afterEach((done) => {
-      testTaskRef.remove().then(() => done());
+      tasksRef.remove().then(() => done());
+    });
+
+    it('should create task and dispatch ADD_TASK', (done) => {
+      const store  = createMockStore({ auth: { uid } }),
+            taskText = 'ADD_TASK - Walk the dog';
+
+      store.dispatch(actions.startAddTask(taskText, 3)).then(() => {
+        const actions = store.getActions();
+
+        expect(actions[0]).toInclude({ type: 'ADD_TASK' });
+        expect(actions[0].task).toInclude({ text: taskText });
+
+        done();
+      }).catch(done);
     });
 
     it('should toggle task and dispatch UPDATE_TASK action', (done) => {
-      const store  = createMockStore({}),
+      const store  = createMockStore({ auth: { uid } }),
             action = actions.startToggleTask(testTaskRef.key, true);
 
       store.dispatch(action).then(() => {
@@ -139,7 +146,7 @@ describe('Actions', () => {
     });
 
     it('should remove task and dispatch REMOVE_TASK action', (done) => {
-      const store  = createMockStore({}),
+      const store  = createMockStore({ auth: { uid } }),
             action = actions.startRemoveTask(testTaskRef.key);
 
       store.dispatch(action).then(() => {
@@ -152,7 +159,7 @@ describe('Actions', () => {
     });
 
     it('should load tasks and dispatch LOAD_TASKS action', (done) => {
-      const store  = createMockStore({}),
+      const store  = createMockStore({ auth: { uid } }),
             action = actions.startLoadTasks();
 
       store.dispatch(action).then(() => {
