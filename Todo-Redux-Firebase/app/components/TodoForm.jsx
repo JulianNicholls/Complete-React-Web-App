@@ -1,7 +1,7 @@
 import React             from 'react';
 import { connect }       from 'react-redux';
 
-import { startAddTask }  from 'actions';
+import * as actions      from 'actions';
 
 export var TodoForm = React.createClass({
   render() {
@@ -24,14 +24,13 @@ export var TodoForm = React.createClass({
   onSubmit(evt) {
     evt.preventDefault();
 
-    let { dispatch } = this.props,
-        taskText     = this.refs.taskText.value,
-        priority     = this.refs.priority.value;
+    let taskText   = this.refs.taskText.value,
+        priority   = this.refs.priority.value;
 
     if(taskText.length > 0) {
       this.refs.form.reset();
 
-      dispatch(startAddTask(taskText, priority));
+      this.props.startAddTask(taskText, priority);
     }
     else {
       this.refs.taskText.focus();
@@ -39,4 +38,4 @@ export var TodoForm = React.createClass({
   }
 });
 
-export default connect()(TodoForm);
+export default connect(null, actions)(TodoForm);
