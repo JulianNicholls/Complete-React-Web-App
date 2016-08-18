@@ -1,5 +1,5 @@
 import React               from 'react';
-import { Route, Router, IndexRoute, hashHistory } from 'react-router';
+import { Route, Router, IndexRoute, browserHistory } from 'react-router';
 
 import firebase            from 'app/firebase'
 
@@ -28,7 +28,7 @@ function redirectIfLoggedIn(nextState, replace, next) {
 }
 
 export default (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path="/">
       <Route path="/tasks" component={TodoApp} onEnter={requireLogin} />
       <IndexRoute component={Login} onEnter={redirectIfLoggedIn} />

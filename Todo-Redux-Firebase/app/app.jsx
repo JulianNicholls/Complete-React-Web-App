@@ -1,7 +1,7 @@
 import React           from 'react';
 import ReactDOM        from 'react-dom';
 import { Provider }    from 'react-redux';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 import firebase        from 'app/firebase';
 
@@ -17,11 +17,11 @@ firebase.auth().onAuthStateChanged((user) => {
     store.dispatch(login(user.uid));
     store.dispatch(startLoadTasks());
 
-    hashHistory.push('/tasks');
+    browserHistory.push('/tasks');
   }
   else {
     store.dispatch(logout());
-    hashHistory.push('/');
+    browserHistory.push('/');
   }
 });
 
