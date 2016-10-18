@@ -1,21 +1,35 @@
 class Person {
-  constructor (name = 'Anonymous', age = 0) {
+  constructor(name = 'A nony mouse', age = 18) {
     this.name = name;
-    this.age = age;
+    this.age  = age;
   }
-  getGreeting () {
-    return `Hi! I'm ${this.name}.`;
+
+  greeting() {
+    return `Hi, I'm ${this.name}.`
   }
-  getDescription () {
-    return `${this.name} is ${this.age} year(s) old.`;
+
+  description() {
+    return `${this.name} is ${this.age} years old.`
   }
-  toString () {
+
+  toString() {
     return JSON.stringify(this);
   }
 }
 
-var me = new Person('Andrew', 25);
-console.log(me.getDescription());
+let me = new Person('Julian', 36);
+let him = new Person('Andrew');
+let amouse = new Person();
 
-var anonymous = new Person();
-console.log(anonymous.getDescription());
+console.log(me.greeting());
+console.log(him.greeting());
+console.log(amouse.greeting());
+
+console.log(me.description());
+console.log(him.description());
+console.log(amouse.description());
+
+console.log({age: 36}.toString());
+console.log(me.toString());
+console.log(him.toString());
+console.log(amouse.toString());
