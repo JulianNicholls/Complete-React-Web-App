@@ -14,7 +14,7 @@ The completed Todo app is available at
 
 ## Status
 
-I have completed the course.
+I have completed the course, including the new section added in October 2016.
 
 ## Git Commits
 
@@ -32,16 +32,18 @@ I have successively started new directories during the course, in this order
 * Nested-Components
 * First-Webpack
 * React-Boilerplate
-* React-Weather       - First version of Weather App, before Foundation styling
-* Weather-Foundation  - Final version of Weather App
+* React-Weather         - First version of Weather App, before Foundation styling
+* Weather-Foundation    - Final version of Weather App
 * React-Boilerplate-2
-* React-Clocks        - Final version of Clocks App
+* React-Clocks          - Final version of Clocks App
 * React-Boilerplate-3
-* React-Todo          - Todo App, using localStorage
-* playground          - short asides from lectures
+* React-Todo            - Todo App, using localStorage
+* playground            - short asides from lectures
 * First-Redux
-* Todo-Redux          - Todo App, using Redux
-* Todo-Redux-Firebase - WIP Todo App, using Redux and Firebase
+* Todo-Redux            - Todo App, using Redux
+* Todo-Redux-Firebase   - Todo App, using Redux and Firebase
+* es6-classes
+* Todo-Redux-Firebase-Component - Final Todo App, with Redux and Firebase, using React Components
 
 ### Important Notes for Todo App
 

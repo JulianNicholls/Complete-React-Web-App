@@ -1,0 +1,51 @@
+.task {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s ease;
+
+  .text {
+    width: 95%;   // Make room for remove div
+  }
+
+  p, input {
+    margin: 0;
+  }
+
+  > :first-child {
+    margin-right: 1rem;
+  }
+
+  &:hover {
+    background: darken($light-grey, 3%);
+
+    .remove {
+      display: block;
+    }
+  }
+}
+
+.priority-1 { color: $pri-1-color; }
+.priority-2 { color: $pri-2-color; }
+.priority-3 { color: $pri-3-color; }
+.priority-4 { color: $pri-4-color; }
+.priority-5 { color: $pri-5-color; }
+
+.remove {
+  font-size: 1.5rem;
+  color: Red;
+  display: none;
+}
+
+.task__subtext {
+  color: #999999;
+  font-size: 85%;
+}
+
+.task-completed {
+  p {
+    color: $light-color;
+    text-decoration: line-through;
+  }
+}
