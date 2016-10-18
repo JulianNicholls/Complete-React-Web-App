@@ -7,8 +7,8 @@ const adminComponent = (Component) => {
     render() {
       if (isAdmin) {
         return (
-          <div>
-            test text from admin wrapper
+          <div className="callout secondary">
+            <p className="alert label">Private admin information</p>
             <Component {...this.props}/>
           </div>
         );
