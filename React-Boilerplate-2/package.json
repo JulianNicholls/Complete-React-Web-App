@@ -28,7 +28,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.23.1",
     "foundation-sites": "^6.2.0",
-    "jquery": "^2.2.1",
+    "jquery": "^3.0.0",
     "node-sass": "^3.4.2",
     "sass-loader": "^3.1.2",
     "script-loader": "^0.6.1",
