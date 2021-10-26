@@ -1,6 +1,6 @@
 # React Course
 
-*BEWARE* This code is from a course last updated in 2016, so it reflects the state of React at that time, i.e. no Hooks, no Context.
+**BEWARE This code is from a course last updated in 2016, so it reflects the state of React at that time, i.e. no Hooks, no Context.**
 
 The code from The Complete React Web App Developer course from
 [Udemy](https://www.udemy.com/the-complete-react-web-app-developer-course).
