@@ -17,7 +17,7 @@
     "axios": "^1.13.5",
     "express": "^4.13.4",
     "firebase": "^12.9.0",
-    "pug": "^2.0.0-beta4",
+    "pug": "^3.0.3",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0"
